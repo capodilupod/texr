@@ -178,7 +178,6 @@ const REPLACE_CHARS = {
   "_( ": "\u208D ",
   "_) ": "\u208E"
 
-  //"\\ ": "\u ",
 };
 
 // Input: string of current text input
@@ -190,6 +189,35 @@ function insertLatexChars(currentTextValue) {
     const toReplace = entry[0];
     const replacement = entry[1];
     textValue = textValue.replace(toReplace, replacement);
+  }
+  
+  var tempString = "";
+  var increment = 0;
+  var sug = document.getElementById("suggestions");
+  if ((textValue.match(/\\\S+/g))){
+    tempString = (textValue.match(/\\\S+/g)[0]);
+    for (const entry of Object.entries(REPLACE_CHARS)) {
+      if (entry[0].indexOf(tempString) != -1)
+      {
+        sug.childNodes[2*increment + 1].innerText = (entry[0] + ': ' + entry[1]).toString();
+        increment++;
+      }
+      if (increment == 5)
+      {
+        break;
+      }
+    }
+    for (var i = increment; i < 5; ++i)
+    {
+      sug.childNodes[2*i + 1].innerText = "";
+    }
+  } //Test string: \in and a \int \asdf \integer_set \integral io
+  else
+  {
+    for (var i = 0; i < 5; ++i)
+    {
+      sug.childNodes[2*i + 1].innerText = "";
+    }
   }
   return textValue;
 }
@@ -204,10 +232,6 @@ function insertLatexChars(currentTextValue) {
 // user devices.
 document.addEventListener('DOMContentLoaded', () => {
   const latexInput = document.getElementById("latex");
-  /*if (document.activeElement.nodeName == 'TEXTAREA' || document.activeElement.nodeName == 'INPUT')
-  {
-    const latexInput = document.activeElement;
-  }*/
   latexInput.onkeydown = () => {
     // setTimeout hack so that we can get updated value of text input
     setTimeout(() => {
