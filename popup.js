@@ -102,7 +102,13 @@ const REPLACE_CHARS = {
   "\\empty_set ": "\u2205 ",
   "\\in ": "\u2208 ",
   "\\sum ": "\u2211 ",
-  "\\integral ": "\u222b "
+  "\\integral ": "\u222b ",
+  "\\double_integral ": "\u222C ",
+  "\\triple_integral ": "\u222D ",
+  "\\not_in ": "\u2209 ",
+  "\\square_root ": "\u221A ",
+  "\\infinity ": "\u221E ",
+  "\\for_all ": "\u2200 ",
 };
 
 // Input: string of current text input
