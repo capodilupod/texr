@@ -13,5 +13,6 @@
     "activeTab",
     "storage",
     "http://*/*"
-  ]
+  ],
+  "web_accessible_resources": ["icon.png"]
 }
