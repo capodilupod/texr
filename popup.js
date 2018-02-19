@@ -96,11 +96,13 @@ function saveBackgroundColor(url, color) {
 }
 
 const REPLACE_CHARS = {
-  "\\union": "\u222A",
-  "\\intersect": "\u2229",
-  "\\real_set": "\u211D",
-  "\\empty_set": "\u2205",
-  "\\in": "\u2208"
+  "\\union ": "\u222A ",
+  "\\intersect ": "\u2229 ",
+  "\\real_set ": "\u211D ",
+  "\\empty_set ": "\u2205 ",
+  "\\in ": "\u2208 ",
+  "\\sum ": "\u2211 ",
+  "\\integral ": "\u222b "
 };
 
 // Input: string of current text input
@@ -126,6 +128,10 @@ function insertLatexChars(currentTextValue) {
 // user devices.
 document.addEventListener('DOMContentLoaded', () => {
   const latexInput = document.getElementById("latex");
+  /*if (document.activeElement.nodeName == 'TEXTAREA' || document.activeElement.nodeName == 'INPUT')
+  {
+    const latexInput = document.activeElement;
+  }*/
   latexInput.onkeydown = () => {
     // setTimeout hack so that we can get updated value of text input
     setTimeout(() => {
