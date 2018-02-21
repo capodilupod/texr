@@ -193,7 +193,7 @@ function insertLatexChars(currentTextValue) {
   if ((textValue.match(/\\\S+/g))){
     tempString = (textValue.match(/\\\S+/g)[0]);
     for (const entry of Object.entries(REPLACE_CHARS)) {
-      if (entry[0].indexOf(tempString) != -1)
+      if (entry[0].indexOf(tempString.substr(1,)) != -1)
       {
         sug.childNodes[2*increment + 1].innerText = (entry[0] + ': ' + entry[1]).toString();
         increment++;
