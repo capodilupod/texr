@@ -11,6 +11,7 @@
       body {
         margin: 10px;
         white-space: nowrap;
+        background-color: #2979FF;
       }
 
       h1 {
@@ -25,13 +26,15 @@
 
       #logo {
         display: block;
-        width: 70px;
+        width: 60%;
+        height: 60%;
         margin: 20px auto;
       }
 
       #latex {
-        padding: 5px;
+        padding: 5%;
         font-size: 15px;
+        width: 90%;
       }
     </style>
 
@@ -141,5 +144,7 @@
     <input type="button" id="hide_glossary" name="answer" value="Hide Glossary" onclick="hideGlossary()" />
   </div>
   <input type="button" id="glossary" name="answer" value="Glossary" onclick="showGlossary()" />
+  <input type="button" id="clipboard" name="answer" value="Copy to Clipboard" onclick="copyToClipboard()" />
+  <input type="button" name="answer" value="Help" onclick="helpButton()" />
 </html>
 
