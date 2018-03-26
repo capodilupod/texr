@@ -58,6 +58,29 @@ function hideGlossary() {
    document.getElementById('glossary').style.display = "block";
 }
 
+function copyToClipboard() {
+  var copyText = document.getElementById("latex");
+  copyText.select();
+  document.execCommand("Copy");
+}
+
+function clickToReplace() {
+  var termToReplace = document.getElementById("click_to_replace");
+  var textBox = document.getElementById("latex");
+
+  var str = termToReplace.value;
+  var pos = str.indexOf(": ") + 2;
+  var replacement = str.substring(pos);
+
+  textBox.value = textBox.value + replacement;
+
+  document.getElementById('glossary_terms').style.display = "none";
+  document.getElementById('glossary').style.display = "block";
+
+  textBox.focus();
+
+}
+
 const REPLACE_CHARS = {
   "\\aleph ": "\u2135 ",
   "\\and ": "\u2227 ",
@@ -193,12 +216,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const latexInput = document.getElementById("latex");
   const glossaryButton = document.getElementById("glossary");
   const hideGlossaryButton = document.getElementById("hide_glossary");
+  const copyToClipboardButton = document.getElementById("copy_to_clipboard");
+  const clickToReplaceButton = document.getElementById("click_to_replace");
 
   glossaryButton.addEventListener('click', function() {
         showGlossary();
   });
   hideGlossaryButton.addEventListener('click', function() {
         hideGlossary();
+  });
+  copyToClipboardButton.addEventListener('click', function() {
+        copyToClipboard();
+  });
+  clickToReplaceButton.addEventListener('click', function() {
+        clickToReplace();
   });
   
   latexInput.onkeydown = () => {
