@@ -3,15 +3,18 @@
  This page is shown when the extension button is clicked, because the
  "browser_action" field in manifest.json contains the "default_popup" key with
  value "popup.html".
+ Original color: 
+        #2979FF;
  -->
 <html>
   <head>
     <title>Texr</title>
     <style type="text/css">
+      
       body {
         margin: 10px;
         white-space: nowrap;
-        background-color: #2979FF;
+        background-color: rgb(66,133,244);
       }
 
       h1 {
@@ -28,13 +31,14 @@
         display: block;
         width: 60%;
         height: 60%;
-        margin: 20px auto;
+        margin: auto;
       }
 
       #latex {
         padding: 5%;
         font-size: 15px;
         width: 90%;
+        margin:auto;
       }
     </style>
 
@@ -49,26 +53,27 @@
 
   <body>
     <img id="logo" src="icon.png"/>
-    <input id="latex" type="text" name="firstname" placeholder="Enter your equation...">
+    <input id="latex" type="text" style="font-size:18px" name="firstname" placeholder="Enter your equation...">
     <ul id="suggestions">
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
-      <h1></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
+      <h1 style="color:white;font-size:18px;"></h1>
     </ul>
   </body>
-  <input type="button" id="glossary" name="answer" value="Show Glossary" onclick="showGlossary()" />
-  <input type="button" id="copy_to_clipboard" name="answer" value="Copy to Clipboard" onclick="copyToClipboard()" />
-  <input type="button" name="answer" value="Help" onclick="helpButton()" />
-  <div id="glossary_terms"  style="display:none;" class="terms" >
+  <input type="button" id="glossary" style="font-size:18px" value="Show Glossary" onclick="showGlossary()" />
+  <input type="button" id="copy_to_clipboard" style="font-size:18px" value="Copy to Clipboard" onclick="copyToClipboard()" />
+  <input type="button" id="help" style="font-size:18px" value="Help" onclick="helpButton()" />
+  <div id="glossary_terms"  style="color:white;display:none;font-size:18px" class="terms" onclick="clickToReplace">
+    <input type="button" id="click_to_replace" style="font-size:18px" name="answer" value="aleph: &#x2135" onclick="clickToReplace()" />
     <h4> </h4>
-    <input type="text" id="click_to_replace" name="answer" value="aleph: &#x2135" onclick="clickToReplace()" />
+    <h4>aleph: &#x2135</h4>
     <h4>and: &#x2227</h4>
     <h4>complement: &#x2201</h4>
     <h4>complex_set: &#x2102</h4>
