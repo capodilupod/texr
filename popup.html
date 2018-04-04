@@ -63,7 +63,11 @@
       <h1></h1>
     </ul>
   </body>
+  <input type="button" id="glossary" name="answer" value="Show Glossary" onclick="showGlossary()" />
+  <input type="button" id="copy_to_clipboard" name="answer" value="Copy to Clipboard" onclick="copyToClipboard()" />
+  <input type="button" name="answer" value="Help" onclick="helpButton()" />
   <div id="glossary_terms"  style="display:none;" class="terms" >
+    <h4> </h4>
     <input type="text" id="click_to_replace" name="answer" value="aleph: &#x2135" onclick="clickToReplace()" />
     <h4>and: &#x2227</h4>
     <h4>complement: &#x2201</h4>
@@ -141,10 +145,6 @@
     <h4>_=: &#x208C</h4>
     <h4>_(: &#x208D</h4>
     <h4>_): &#x208E</h4>
-    <input type="button" id="hide_glossary" name="answer" value="Hide Glossary" onclick="hideGlossary()" />
   </div>
-  <input type="button" id="glossary" name="answer" value="Glossary" onclick="showGlossary()" />
-  <input type="button" id="copy_to_clipboard" name="answer" value="Copy to Clipboard" onclick="copyToClipboard()" />
-  <input type="button" name="answer" value="Help" onclick="helpButton()" />
 </html>
 

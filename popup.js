@@ -47,16 +47,29 @@ function getCurrentTabUrl(callback) {
   // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
 
+function helpButton() {
+   document.getElementById('help_text').style.display = "block";
+}
+
+var glossary_shown = false;
 
 function showGlossary() {
-   document.getElementById('glossary_terms').style.display = "block";
-   document.getElementById('glossary').style.display = "none";
+   glossary_shown = !glossary_shown;
+   if (glossary_shown) {
+      document.getElementById('glossary_terms').style.display = "block";
+      document.getElementById('glossary').value = "Hide Glossary";
+   }
+   else {
+      document.getElementById('glossary_terms').style.display = "none";
+      document.getElementById('glossary').value = "Show Glossary";
+   }
+   //document.getElementById('glossary').style.display = "none";
 }
 
-function hideGlossary() {
+/*function hideGlossary() {
    document.getElementById('glossary_terms').style.display = "none";
    document.getElementById('glossary').style.display = "block";
-}
+}*/
 
 function copyToClipboard() {
   var copyText = document.getElementById("latex");
@@ -74,8 +87,11 @@ function clickToReplace() {
 
   textBox.value = textBox.value + replacement;
 
-  document.getElementById('glossary_terms').style.display = "none";
-  document.getElementById('glossary').style.display = "block";
+  //document.getElementById('glossary_terms').style.display = "none";
+  //document.getElementById('glossary').style.display = "block";
+  if (glossary_shown){
+      showGlossary();
+  }
 
   textBox.focus();
 
@@ -91,6 +107,7 @@ const REPLACE_CHARS = {
   "\\double_integral ": "\u222C ",
   "\\e ": "\u2147 ",
   "\\empty_set ": "\u2205 ",
+  "\\existential_quantifier ": "\u2203 ",
   "\\for_all ": "\u2200 ",
   "\\i ": "\u2148 ",
   "\\iff ": "\u2194 ",
@@ -126,6 +143,7 @@ const REPLACE_CHARS = {
   "\\there_exists ": "\u2203 ",
   "\\triple_integral ": "\u222D ",
   "\\union ": "\u222A ",
+  "\\universal_quantifier ": "\u2200 ",
   "\\xor ": "\u2295 ",
   "\\4rt ": "\u221C ",
   "^0": "\u2070",
@@ -215,16 +233,16 @@ function insertLatexChars(currentTextValue) {
 document.addEventListener('DOMContentLoaded', () => {
   const latexInput = document.getElementById("latex");
   const glossaryButton = document.getElementById("glossary");
-  const hideGlossaryButton = document.getElementById("hide_glossary");
+  //const hideGlossaryButton = document.getElementById("hide_glossary");
   const copyToClipboardButton = document.getElementById("copy_to_clipboard");
   const clickToReplaceButton = document.getElementById("click_to_replace");
 
   glossaryButton.addEventListener('click', function() {
         showGlossary();
   });
-  hideGlossaryButton.addEventListener('click', function() {
+  /*hideGlossaryButton.addEventListener('click', function() {
         hideGlossary();
-  });
+  });*/
   copyToClipboardButton.addEventListener('click', function() {
         copyToClipboard();
   });
