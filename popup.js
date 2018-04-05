@@ -15,23 +15,23 @@ function getCurrentTabUrl(callback) {
   });
 }
 
+//Global boolean for whether or not the glossary is currently active.
+var help_shown = false;
+
 //Requires: None.
 //Modifies: None.
 //Effects: Shows or hides the help text.
-function helpButton() {
-   //Use '\' to begin typing a command.
-   //    Arrow keys or Click on suggestion to autofill
-   //    TODO NOT YET IMPLEMENTED
-   //Click the glossary button to see a list of available commands.
-   //    Click on the suggestion to automatically insert
-   //    TODO ABOVE FEATURE NOT YET IMPLEMENTED
-   //    (Possibly use arrow keys as well?)
-   //^ controls superscript 0-9, +, =, (, ) supported
-   //    ^{X} allows multiple superscript with one replace
-   //    TODO ABOVE FEATURE NOT YET IMPLEMENTED
-   //_ controls subscript 0-9, +, =, (, ) supported
-   //    _{X} allows multiple subscript with one replace
-   //    TODO ABOVE FEATURE NOT YET IMPLEMENTED
+function showHelpInfo() {
+  help_shown = !help_shown;
+   if (help_shown) {
+      document.getElementById('help_info').style.display = "block";
+      document.getElementById('help').value = "Hide Help";
+   }
+   else {
+      document.getElementById('help_info').style.display = "none";
+      document.getElementById('help_info').value = "Help";
+   }
+   
 }
 
 //Global boolean for whether or not the glossary is currently active.
@@ -61,17 +61,17 @@ function copyToClipboard() {
   document.execCommand("Copy");
 }
 
-//TODO modify this to work with more than just aleph
-function clickToReplace() {
-  var termToReplace = document.getElementById("click_to_replace");
+//Required: None.
+//Modifies: Text field.
+//Effects: Places selected symbol into the text box.
+function clickToReplace(termToReplace) {
   var textBox = document.getElementById("latex");
-  var str = termToReplace.value;
-  var pos = str.indexOf(": ") + 2;
-  var replacement = str.substring(pos);
-  textBox.value = textBox.value + replacement;
+  textBox.value = textBox.value  + termToReplace;
+
   if (glossary_shown){
       showGlossary();
   }
+
   textBox.focus();
 }
 
@@ -211,21 +211,183 @@ function insertLatexChars(currentTextValue) {
 // chrome.storage.local allows the extension data to be synced across multiple
 // user devices.
 document.addEventListener('DOMContentLoaded', () => {
-  const latexInput = document.getElementById("latex");
-  const glossaryButton = document.getElementById("glossary");
-  const copyToClipboardButton = document.getElementById("copy_to_clipboard");
-  const clickToReplaceButton = document.getElementById("click_to_replace");
+  const latex_input = document.getElementById("latex");
+  const glossary_button = document.getElementById("glossary");
+  const copy_to_clipboard_button = document.getElementById("copy_to_clipboard");
+  const help_button = document.getElementById("help");
 
-  glossaryButton.addEventListener('click', function() { showGlossary(); });
-  copyToClipboardButton.addEventListener('click', function() { copyToClipboard(); });
-  clickToReplaceButton.addEventListener('click', function() { clickToReplace(); });
+  glossary_button.addEventListener('click', function() { showGlossary(); });
+  copy_to_clipboard_button.addEventListener('click', function() { copyToClipboard(); });
+  help_button.addEventListener('click', function() { showHelpInfo(); });
+
+  // Creating listeners for all buttons in glossary. Very repetitive and inefficient
+  // but was having trouble otherwise.
+  const aleph_button = document.getElementById("aleph");
+  const and_button = document.getElementById("and");
+  const complement_button = document.getElementById("complement");
+  const complex_set_button = document.getElementById("complex_set");
+  const cubert_button = document.getElementById("cubert");
+  const definition_button = document.getElementById("definition");
+  const double_integral_button = document.getElementById("double_integral");
+  const e_button = document.getElementById("e");
+  const empty_set_button = document.getElementById("empty_set");
+  const existential_quantifier_button = document.getElementById("existential_quantifier");
+  const for_all_button = document.getElementById("for_all");
+  const i_button = document.getElementById("i");
+  const iff_button = document.getElementById("iff");
+  const implies_button = document.getElementById("implies");
+  const in_button = document.getElementById("in");
+  const infinity_button = document.getElementById("infinity");
+  const integer_set_button = document.getElementById("integer_set");
+  const integral_button = document.getElementById("integral");
+  const intersect_button = document.getElementById("intersect");
+  const nand_button = document.getElementById("nand");
+  const natural_set_button = document.getElementById("natural_set");
+  const nor_button = document.getElementById("nor");
+  const not_button = document.getElementById("not");
+  const not_in_button = document.getElementById("not_in");
+  const not_equal_button = document.getElementById("not_equal");
+  const not_proper_subset_button = document.getElementById("not_proper_subset");
+  const not_proper_superset_button = document.getElementById("not_proper_superset");
+  const not_subset_button = document.getElementById("not_subset");
+  const not_superset_button = document.getElementById("not_superset");
+  const or_button = document.getElementById("or");
+  const pi_button = document.getElementById("pi");
+  const power_set_button = document.getElementById("power_set");
+  const product_button = document.getElementById("product");
+  const proper_subset_button = document.getElementById("proper_subset");
+  const proper_superset_button = document.getElementById("proper_superset");
+  const rational_set_button = document.getElementById("rational_set");
+  const real_set_button = document.getElementById("real_set");
+  const square_root_button = document.getElementById("square_root");
+  const sqrt_button = document.getElementById("sqrt");
+  const subset_button = document.getElementById("subset");
+  const sum_button = document.getElementById("sum");
+  const superset_button = document.getElementById("superset");
+  const there_exists_button = document.getElementById("there_exists");
+  const triple_integral_button = document.getElementById("triple_integral");
+  const union_button = document.getElementById("union");
+  const universal_quantifier = document.getElementById("universal_quantifier");
+  const xor_button = document.getElementById("xor");
+  const four_rt_button = document.getElementById("4rt");
+  const super_0_button = document.getElementById("^0");
+  const super_1_button = document.getElementById("^1");
+  const super_2_button = document.getElementById("^2");
+  const super_3_button = document.getElementById("^3");
+  const super_4_button = document.getElementById("^4");
+  const super_5_button = document.getElementById("^5");
+  const super_6_button = document.getElementById("^6");
+  const super_7_button = document.getElementById("^7");
+  const super_8_button = document.getElementById("^8");
+  const super_9_button = document.getElementById("^9");
+  const super_plus_button = document.getElementById("^+");
+  const super_minus_button = document.getElementById("^-");
+  const super_equal_button = document.getElementById("^=");
+  const super_left_paren_button = document.getElementById("^(");
+  const super_right_paren_button = document.getElementById("^)");
+  const super_n_button = document.getElementById("^n");
+  const sub_0_button = document.getElementById("_0");
+  const sub_1_button = document.getElementById("_1");
+  const sub_2_button = document.getElementById("_2");
+  const sub_3_button = document.getElementById("_3");
+  const sub_4_button = document.getElementById("_4");
+  const sub_5_button = document.getElementById("_5");
+  const sub_6_button = document.getElementById("_6");
+  const sub_7_button = document.getElementById("_7");
+  const sub_8_button = document.getElementById("_8");
+  const sub_9_button = document.getElementById("_9");
+  const sub_plus_button = document.getElementById("_+");
+  const sub_minus_button = document.getElementById("_-");
+  const sub_equals_button = document.getElementById("_=");
+  const sub_left_paren_button = document.getElementById("_(");
+  const sub_right_paren_button = document.getElementById("_)");
+
+  aleph_button.addEventListener('click', function() { clickToReplace("\u2135"); });
+  and_button.addEventListener('click', function() { clickToReplace("\u2227"); });
+  complement_button.addEventListener('click', function() { clickToReplace("\u2201"); });
+  complex_set_button.addEventListener('click', function() { clickToReplace("\u2102"); });
+  cubert_button.addEventListener('click', function() { clickToReplace("\u221B"); });
+  definition_button.addEventListener('click', function() { clickToReplace("\u2254"); });
+  double_integral_button.addEventListener('click', function() { clickToReplace("\u222C"); });
+  e_button.addEventListener('click', function() { clickToReplace("\u2147"); });
+  empty_set_button.addEventListener('click', function() { clickToReplace("\u2205"); });
+  existential_quantifier.addEventListener('click', function() { clickToReplace("\u2203"); });
+  for_all_button.addEventListener('click', function() { clickToReplace("\u2200"); });
+  i_button.addEventListener('click', function() { clickToReplace("\u2148"); });
+  iff_button.addEventListener('click', function() { clickToReplace("\u2194"); });
+  implies_button.addEventListener('click', function() { clickToReplace("\u2192"); });
+  in_button.addEventListener('click', function() { clickToReplace("\u2208"); });
+  infinity_button.addEventListener('click', function() { clickToReplace("\u221E"); });
+  integer_set_button.addEventListener('click', function() { clickToReplace("\u2124"); });
+  integral_button.addEventListener('click', function() { clickToReplace("\u222b"); });
+  intersect_button.addEventListener('click', function() { clickToReplace("\u2229"); });
+  nand_button.addEventListener('click', function() { clickToReplace("\u22BC"); });
+  natural_set_button.addEventListener('click', function() { clickToReplace("\u2155"); });
+  nor_button.addEventListener('click', function() { clickToReplace("\u22BD"); }); 
+  not_button.addEventListener('click', function() { clickToReplace("\u00AC"); });
+  not_in_button.addEventListener('click', function() { clickToReplace("\u2209"); });
+  not_equal_button.addEventListener('click', function() { clickToReplace("\u2260"); });
+  not_proper_subset_button.addEventListener('click', function() { clickToReplace("\u2248"); });
+  not_proper_superset_button.addEventListener('click', function() { clickToReplace("\u2285"); });
+  not_subset_button.addEventListener('click', function() { clickToReplace("\u2288"); });
+  not_superset_button.addEventListener('click', function() { clickToReplace("\u2289"); });
+  or_button.addEventListener('click', function() { clickToReplace("\u2228"); });
+  pi_button.addEventListener('click', function() { clickToReplace("\u03C0"); });
+  power_set_button.addEventListener('click', function() { clickToReplace("\u2118"); });
+  product_button.addEventListener('click', function() { clickToReplace("\u220F"); });
+  proper_subset_button.addEventListener('click', function() { clickToReplace("\u2282"); });
+  proper_superset_button.addEventListener('click', function() { clickToReplace("\u2283"); });
+  rational_set_button.addEventListener('click', function() { clickToReplace("\u211A"); });
+  real_set_button.addEventListener('click', function() { clickToReplace("\u211D"); });
+  square_root_button.addEventListener('click', function() { clickToReplace("\u221A"); });
+  sqrt_button.addEventListener('click', function() { clickToReplace("\u221A"); });
+  subset_button.addEventListener('click', function() { clickToReplace("\u2286"); });
+  sum_button.addEventListener('click', function() { clickToReplace("\u2211"); });
+  superset_button.addEventListener('click', function() { clickToReplace("\u2287"); });
+  there_exists_button.addEventListener('click', function() { clickToReplace("\u2203"); });
+  triple_integral_button.addEventListener('click', function() { clickToReplace("\u222D"); });
+  union_button.addEventListener('click', function() { clickToReplace("\u222A"); });
+  universal_quantifier.addEventListener('click', function() { clickToReplace("\u2200"); });
+  xor_button.addEventListener('click', function() { clickToReplace("\u2995"); });
+  four_rt_button.addEventListener('click', function() { clickToReplace("\u221C"); });
+  super_0_button.addEventListener('click', function() { clickToReplace("\u2070"); });
+  super_1_button.addEventListener('click', function() { clickToReplace("\u00b9"); });
+  super_2_button.addEventListener('click', function() { clickToReplace("\u00b2"); });
+  super_3_button.addEventListener('click', function() { clickToReplace("\u00b3"); });
+  super_4_button.addEventListener('click', function() { clickToReplace("\u2074"); });
+  super_5_button.addEventListener('click', function() { clickToReplace("\u2075"); });
+  super_6_button.addEventListener('click', function() { clickToReplace("\u2076"); });
+  super_7_button.addEventListener('click', function() { clickToReplace("\u2077"); });
+  super_8_button.addEventListener('click', function() { clickToReplace("\u2078"); });
+  super_9_button.addEventListener('click', function() { clickToReplace("\u2079"); });
+  super_plus_button.addEventListener('click', function() { clickToReplace("\u207A"); });
+  super_minus_button.addEventListener('click', function() { clickToReplace("\u207B"); });
+  super_equal_button.addEventListener('click', function() { clickToReplace("\u207C"); });
+  super_left_paren_button.addEventListener('click', function() { clickToReplace("\u207D"); });
+  super_right_paren_button.addEventListener('click', function() { clickToReplace("\u207E"); });
+  super_n_button.addEventListener('click', function() { clickToReplace("\u207F"); });
+  sub_0_button.addEventListener('click', function() { clickToReplace("\u2080"); });
+  sub_1_button.addEventListener('click', function() { clickToReplace("\u2081"); });
+  sub_2_button.addEventListener('click', function() { clickToReplace("\u2082"); });
+  sub_3_button.addEventListener('click', function() { clickToReplace("\u2083"); });
+  sub_4_button.addEventListener('click', function() { clickToReplace("\u2084"); });
+  sub_5_button.addEventListener('click', function() { clickToReplace("\u2085"); });
+  sub_6_button.addEventListener('click', function() { clickToReplace("\u2086"); });
+  sub_7_button.addEventListener('click', function() { clickToReplace("\u2087"); });
+  sub_8_button.addEventListener('click', function() { clickToReplace("\u2088"); });
+  sub_9_button.addEventListener('click', function() { clickToReplace("\u2089"); });
+  sub_plus_button.addEventListener('click', function() { clickToReplace("\u208A"); });
+  sub_minus_button.addEventListener('click', function() { clickToReplace("\u208B"); });
+  sub_equals_button.addEventListener('click', function() { clickToReplace("\u208C"); });
+  sub_left_paren_button.addEventListener('click', function() { clickToReplace("\u208D"); });
+  sub_right_paren_button.addEventListener('click', function() { clickToReplace("\u208E"); });
   
-  latexInput.onkeydown = () => {
+  latex_input.onkeydown = () => {
     // setTimeout hack so that we can get updated value of text input
     setTimeout(() => {
-      const newValue = latexInput.value;
+      const newValue = latex_input.value;
       const processedValue = insertLatexChars(newValue);
-      latexInput.value = processedValue;
+      latex_input.value = processedValue;
     }, 0);
   }
 });
