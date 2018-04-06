@@ -259,6 +259,9 @@ function insertLatexChars(currentTextValue) {
          else if (textValue.charAt(i) == 'n') {
             switchvar = "\u207F";
          }
+         else {
+            switchvar = textValue.charAt(i);
+         }
          textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
       }
       textValue = textValue.substr(0, textValue.indexOf('^')) + textValue.substr(textValue.indexOf('^') + 1, textValue.length);
@@ -316,6 +319,9 @@ function insertLatexChars(currentTextValue) {
          }
          else if (textValue.charAt(i) == ')') {
             switchvar = "\u208E";
+         }
+         else {
+            switchvar = textValue.charAt(i);
          }
          textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
       }
