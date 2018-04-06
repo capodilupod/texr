@@ -21,6 +21,13 @@
         font-size: 15px;
       }
 
+      p {
+        margin:0;
+        padding:10;
+        word-wrap:break-word;
+        overflow-wrap:break-word;
+      }
+
       #container {
         align-items: center;
         display: flex;
@@ -81,14 +88,14 @@
     <input type="button" id="help" style="font-size:18px" value="Help"/>
   </div>
   <div id="help_info" style="color:white;display:none;font-size:18px">
-    <p>Use '\' to begin typing a command.</p>
-    <p>Arrow keys or Click on suggestion to autofill.</p>
-    <p>Click the glossary button to see a list of available commands.</p>
-    <p>Click on the suggestion to automatically insert</p>
-    <p>^ controls superscript 0-9, +, =, (, ) supported</p>
-    <p>^{X} allows multiple superscript with one replace</p>
-    <p>_ controls subscript 0-9, +, =, (, ) supported</p>
-    <p>_{X} allows multiple subscript with one replace</p>
+    <p>1. Type \ to begin typing a command.</p>
+    <p>2. Click a suggestion to autofill.</p>
+    <p>3. The glossary shows a list of available commands.</p>
+    <p>4. Click in the glossary to automatically insert a symbol.</p>
+    <p>5. ^ controls superscript. Available characters are [0-9], '+', '=', '(', ')'.</p>
+    <p>6. ^{ } allows multiple superscript replacement inside the brackets. Same symbol set as above.</p>
+    <p>7. _ controls subscript. Available characters are [0-9], '+', '=', '(', ')'.</p>
+    <p>8. _{ } allows multiple subscript replacement inside the brackets. Same symbol set as above.</p>
   </div>
   <div id="glossary_terms" style="color:white;display:none;font-size:18px" class="terms">
     <br><button id="aleph" style="font-size:18px">aleph: &#x2135</button><br>
