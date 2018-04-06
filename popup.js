@@ -29,7 +29,7 @@ function showHelpInfo() {
    }
    else {
       document.getElementById('help_info').style.display = "none";
-      document.getElementById('help_info').value = "Help";
+      document.getElementById('help').value = "Help";
    }
    
 }
