@@ -136,39 +136,46 @@ const REPLACE_CHARS = {
   "\\universal_quantifier ": "\u2200 ",
   "\\xor ": "\u2295 ",
   "\\4rt ": "\u221C ",
-  "^0": "\u2070",
-  "^1": "\u00b9",
-  "^2": "\u00b2",
-  "^3": "\u00b3",
-  "^4": "\u2074",
-  "^5": "\u2075",
-  "^6": "\u2076",
-  "^7": "\u2077",
-  "^8": "\u2078",
-  "^9": "\u2079",
-  "^+": "\u207A",
-  "^-": "\u207B",
-  "^=": "\u207C",
-  "^(": "\u207D",
-  "^)": "\u207E",
-  "^n": "\u207F",
-  "_0": "\u2080",
-  "_1": "\u2081",
-  "_2": "\u2082",
-  "_3": "\u2083",
-  "_4": "\u2084",
-  "_5": "\u2085",
-  "_6": "\u2086",
-  "_7": "\u2087",
-  "_8": "\u2088",
-  "_9": "\u2089",
-  "_+": "\u208A",
-  "_-": "\u208B",
-  "_=": "\u208C",
-  "_(": "\u208D",
-  "_)": "\u208E"
+  "^0 ": "\u2070 ",
+  "^1 ": "\u00b9 ",
+  "^2 ": "\u00b2 ",
+  "^3 ": "\u00b3 ",
+  "^4 ": "\u2074 ",
+  "^5 ": "\u2075 ",
+  "^6 ": "\u2076 ",
+  "^7 ": "\u2077 ",
+  "^8 ": "\u2078 ",
+  "^9 ": "\u2079 ",
+  "^+ ": "\u207A ",
+  "^- ": "\u207B ",
+  "^= ": "\u207C ",
+  "^( ": "\u207D ",
+  "^) ": "\u207E ",
+  "^n ": "\u207F ",
+  "_0 ": "\u2080 ",
+  "_1 ": "\u2081 ",
+  "_2 ": "\u2082 ",
+  "_3 ": "\u2083 ",
+  "_4 ": "\u2084 ",
+  "_5 ": "\u2085 ",
+  "_6 ": "\u2086 ",
+  "_7 ": "\u2087 ",
+  "_8 ": "\u2088 ",
+  "_9 ": "\u2089 ",
+  "_+ ": "\u208A ",
+  "_- ": "\u208B ",
+  "_= ": "\u208C ",
+  "_( ": "\u208D ",
+  "_) ": "\u208E "
 
 };
+
+
+String.prototype.replaceAt=function(index, replacement) {
+   return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
+}
+
+var switchvar = "";
 
 //Requries: String of current text input.
 //Modifies: Text in the text input, swaps command string for unicode.
@@ -200,6 +207,125 @@ function insertLatexChars(currentTextValue) {
     {
       sug.childNodes[2*i + 1].innerText = "";
     }
+  }
+  if ((textValue.match(/\^\{.+\}/g))) {
+      for (var i = textValue.indexOf('{') + 1; i < textValue.indexOf('}'); ++i)
+      {
+         if (textValue.charAt(i) == 0) {
+            switchvar = "\u2070";
+         }
+         else if (textValue.charAt(i) == 1) {
+            switchvar = "\u00b9";
+         }
+         else if (textValue.charAt(i) == 2) {
+            switchvar = "\u00b2";
+         }
+         else if (textValue.charAt(i) == 3) {
+            switchvar = "\u00b3";
+         }
+         else if (textValue.charAt(i) == 4) {
+            switchvar = "\u2074";
+         }
+         else if (textValue.charAt(i) == 5) {
+            switchvar = "\u2075";
+         }
+         else if (textValue.charAt(i) == 6) {
+            switchvar = "\u2076";
+         }
+         else if (textValue.charAt(i) == 7) {
+            switchvar = "\u2077";
+         }
+         else if (textValue.charAt(i) == 8) {
+            switchvar = "\u2078";
+         }
+         else if (textValue.charAt(i) == 9) {
+            switchvar = "\u2079";
+         }
+         else if (textValue.charAt(i) == '+') {
+            switchvar = "\u207A";
+         }
+         else if (textValue.charAt(i) == '-') {
+            switchvar = "\u207B";
+         }
+         else if (textValue.charAt(i) == '=') {
+            switchvar = "\u207C";
+         }
+         else if (textValue.charAt(i) == '(') {
+            switchvar = "\u207D";
+         }
+         else if (textValue.charAt(i) == ')') {
+            switchvar = "\u207E";
+         }
+         else if (textValue.charAt(i) == 'n') {
+            switchvar = "\u207F";
+         }
+         textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
+      }
+      textValue = textValue.substr(0, textValue.indexOf('^')) + textValue.substr(textValue.indexOf('^') + 1, textValue.length);
+      textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
+      textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
+      for (var i = 0; i < 5; ++i)
+       {
+         sug.childNodes[2*i + 1].innerText = "";
+       }
+  }
+  else if ((textValue.match(/\_\{.+\}/g))) {
+      for (var i = textValue.indexOf('{') + 1; i < textValue.indexOf('}'); ++i)
+      {
+         if (textValue.charAt(i) == 0) {
+            switchvar = "\u2080";
+         }
+         else if (textValue.charAt(i) == 1) {
+            switchvar = "\u2081";
+         }
+         else if (textValue.charAt(i) == 2) {
+            switchvar = "\u2082";
+         }
+         else if (textValue.charAt(i) == 3) {
+            switchvar = "\u2083";
+         }
+         else if (textValue.charAt(i) == 4) {
+            switchvar = "\u2084";
+         }
+         else if (textValue.charAt(i) == 5) {
+            switchvar = "\u2085";
+         }
+         else if (textValue.charAt(i) == 6) {
+            switchvar = "\u2086";
+         }
+         else if (textValue.charAt(i) == 7) {
+            switchvar = "\u2087";
+         }
+         else if (textValue.charAt(i) == 8) {
+            switchvar = "\u2088";
+         }
+         else if (textValue.charAt(i) == 9) {
+            switchvar = "\u2089";
+         }
+         else if (textValue.charAt(i) == '+') {
+            switchvar = "\u208A";
+         }
+         else if (textValue.charAt(i) == '-') {
+            switchvar = "\u208B";
+         }
+         else if (textValue.charAt(i) == '=') {
+            switchvar = "\u208C";
+         }
+         else if (textValue.charAt(i) == '(') {
+            switchvar = "\u208D";
+         }
+         else if (textValue.charAt(i) == ')') {
+            switchvar = "\u208E";
+         }
+         textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
+      }
+      textValue = textValue.substr(0, textValue.indexOf('_')) + textValue.substr(textValue.indexOf('_') + 1, textValue.length);
+      textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
+      textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
+      for (var i = 0; i < 5; ++i)
+       {
+         sug.childNodes[2*i + 1].innerText = "";
+       }
   }
   else
   {
