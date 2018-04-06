@@ -226,29 +226,50 @@ document.addEventListener('DOMContentLoaded', () => {
   const help_button = document.getElementById("help");
   const latex_input = document.getElementById("latex");
   const suggestions = document.getElementById("suggestions");
+  const glossary_terms = document.getElementById("glossary_terms");
 
+  glossary_terms.addEventListener('click', function(e) {
+      var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 1, e.target.innerHTML.length);
+      latex_input.value += replacementValue;
+      window.scrollTo(0, 0);
+  });
   suggestions.addEventListener('click', function(e) {
-
-      var textBox = document.getElementById("latex");
-      var textIn = textBox.value;
-      var lastBackSlash = textIn.lastIndexOf("\\");
-      var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 2, e.target.innerHTML.length);
-      textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
-      textBox.focus();
-      for (var i = 0; i < 5; ++i)
+      if (e.target.innerHTML != " ")
       {
-         suggestions.childNodes[2*i + 1].innerText = "";
+         var textBox = document.getElementById("latex");
+         var textIn = textBox.value;
+         var lastBackSlash = textIn.lastIndexOf("\\");
+         var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 2, e.target.innerHTML.length);
+         textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
+         textBox.focus();
+         for (var i = 0; i < 5; ++i)
+         {
+            suggestions.childNodes[2*i + 1].innerText = "";
+         }
       }
   });
   glossary_button.addEventListener('click', function() { showGlossary(); });
   copy_to_clipboard_button.addEventListener('click', function() { copyToClipboard(); });
   help_button.addEventListener('click', function() { showHelpInfo(); });
   latex_input.addEventListener('keydown', function(e) {
-        if (e.keyCode == 13) {
-            replaceWithEnter();
-        }
-    });
+      if (e.keyCode == 13) {
+         replaceWithEnter();
+      }
+  });
 
+
+  latex_input.onkeydown = () => {
+    // setTimeout hack so that we can get updated value of text input
+    setTimeout(() => {
+      const newValue = latex_input.value;
+      const processedValue = insertLatexChars(newValue);
+      latex_input.value = processedValue;
+    }, 0);
+  }
+});
+
+
+/*
   // Creating listeners for all buttons in glossary. Very repetitive and inefficient
   // but was having trouble otherwise.
   const aleph_button = document.getElementById("aleph");
@@ -410,13 +431,4 @@ document.addEventListener('DOMContentLoaded', () => {
   sub_equals_button.addEventListener('click', function() { clickToReplace("\u208C"); });
   sub_left_paren_button.addEventListener('click', function() { clickToReplace("\u208D"); });
   sub_right_paren_button.addEventListener('click', function() { clickToReplace("\u208E"); });
-  
-  latex_input.onkeydown = () => {
-    // setTimeout hack so that we can get updated value of text input
-    setTimeout(() => {
-      const newValue = latex_input.value;
-      const processedValue = insertLatexChars(newValue);
-      latex_input.value = processedValue;
-    }, 0);
-  }
-});
+  */
