@@ -235,6 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
       var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 2, e.target.innerHTML.length);
       textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
       textBox.focus();
+      for (var i = 0; i < 5; ++i)
+      {
+         suggestions.childNodes[2*i + 1].innerText = "";
+      }
   });
   glossary_button.addEventListener('click', function() { showGlossary(); });
   copy_to_clipboard_button.addEventListener('click', function() { copyToClipboard(); });
