@@ -79,7 +79,7 @@ function replaceWithEnter() {
   var textBox = document.getElementById("latex");
   var textIn = textBox.value;
   var lastBackSlash = textIn.lastIndexOf("\\");
-  var replacementValue = textIn.substring(lastBackSlash) + ' ';
+  var replacementValue = textIn.substring(lastBackSlash);
   textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
   textBox.focus();
 }
