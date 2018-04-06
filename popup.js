@@ -75,6 +75,15 @@ function clickToReplace(termToReplace) {
   textBox.focus();
 }
 
+function replaceWithEnter() {
+  var textBox = document.getElementById("latex");
+  var textIn = textBox.value;
+  var lastBackSlash = textIn.lastIndexOf("\\");
+  var replacementValue = textIn.substring(lastBackSlash) + ' ';
+  textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
+  textBox.focus();
+}
+
 //Global variable containing all characters and replacements.
 //Format as "\\COMMAND ": "\uXXXX ", where XXXX is the unicode.
 //Try to keep in alphabetical order.
@@ -211,14 +220,19 @@ function insertLatexChars(currentTextValue) {
 // chrome.storage.local allows the extension data to be synced across multiple
 // user devices.
 document.addEventListener('DOMContentLoaded', () => {
-  const latex_input = document.getElementById("latex");
   const glossary_button = document.getElementById("glossary");
   const copy_to_clipboard_button = document.getElementById("copy_to_clipboard");
   const help_button = document.getElementById("help");
+  const latex_input = document.getElementById("latex");
 
   glossary_button.addEventListener('click', function() { showGlossary(); });
   copy_to_clipboard_button.addEventListener('click', function() { copyToClipboard(); });
   help_button.addEventListener('click', function() { showHelpInfo(); });
+  latex_input.addEventListener('keydown', function(e) {
+        if (e.keyCode == 13) {
+            replaceWithEnter();
+        }
+    });
 
   // Creating listeners for all buttons in glossary. Very repetitive and inefficient
   // but was having trouble otherwise.
