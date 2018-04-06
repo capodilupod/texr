@@ -234,18 +234,15 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo(0, 0);
   });
   suggestions.addEventListener('click', function(e) {
-      if (e.target.innerHTML != " ")
+      var textBox = document.getElementById("latex");
+      var textIn = textBox.value;
+      var lastBackSlash = textIn.lastIndexOf("\\");
+      var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 2, e.target.innerHTML.length);
+      textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
+      textBox.focus();
+      for (var i = 0; i < 5; ++i)
       {
-         var textBox = document.getElementById("latex");
-         var textIn = textBox.value;
-         var lastBackSlash = textIn.lastIndexOf("\\");
-         var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 2, e.target.innerHTML.length);
-         textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
-         textBox.focus();
-         for (var i = 0; i < 5; ++i)
-         {
-            suggestions.childNodes[2*i + 1].innerText = "";
-         }
+         suggestions.childNodes[2*i + 1].innerText = "";
       }
   });
   glossary_button.addEventListener('click', function() { showGlossary(); });
