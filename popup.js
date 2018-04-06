@@ -219,12 +219,23 @@ function insertLatexChars(currentTextValue) {
 // to a document's origin. Also, using chrome.storage.sync instead of
 // chrome.storage.local allows the extension data to be synced across multiple
 // user devices.
+
 document.addEventListener('DOMContentLoaded', () => {
   const glossary_button = document.getElementById("glossary");
   const copy_to_clipboard_button = document.getElementById("copy_to_clipboard");
   const help_button = document.getElementById("help");
   const latex_input = document.getElementById("latex");
+  const suggestions = document.getElementById("suggestions");
 
+  suggestions.addEventListener('click', function(e) {
+
+      var textBox = document.getElementById("latex");
+      var textIn = textBox.value;
+      var lastBackSlash = textIn.lastIndexOf("\\");
+      var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 2, e.target.innerHTML.length);
+      textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
+      textBox.focus();
+  });
   glossary_button.addEventListener('click', function() { showGlossary(); });
   copy_to_clipboard_button.addEventListener('click', function() { copyToClipboard(); });
   help_button.addEventListener('click', function() { showHelpInfo(); });
