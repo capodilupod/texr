@@ -4,14 +4,14 @@
 //Effects: Initializes the extension window.
 function getCurrentTabUrl(callback) {
   var queryInfo = {
-    active: true,
-    currentWindow: true
+	active: true,
+	currentWindow: true
   };
   chrome.tabs.query(queryInfo, (tabs) => {
-    var tab = tabs[0];
-    var url = tab.url;
-    console.assert(typeof url == 'string', 'tab.url should be a string');
-    callback(url);
+	var tab = tabs[0];
+	var url = tab.url;
+	console.assert(typeof url == 'string', 'tab.url should be a string');
+	callback(url);
   });
 }
 
@@ -24,12 +24,12 @@ var help_shown = false;
 function showHelpInfo() {
   help_shown = !help_shown;
    if (help_shown) {
-      document.getElementById('help_info').style.display = "block";
-      document.getElementById('help').value = "Hide Help";
+	  document.getElementById('help_info').style.display = "block";
+	  document.getElementById('help').value = "Hide Help";
    }
    else {
-      document.getElementById('help_info').style.display = "none";
-      document.getElementById('help').value = "Help";
+	  document.getElementById('help_info').style.display = "none";
+	  document.getElementById('help').value = "Help";
    }
    
 }
@@ -43,12 +43,12 @@ var glossary_shown = false;
 function showGlossary() {
    glossary_shown = !glossary_shown;
    if (glossary_shown) {
-      document.getElementById('glossary_terms').style.display = "block";
-      document.getElementById('glossary').value = "Hide Glossary";
+	  document.getElementById('glossary_terms').style.display = "block";
+	  document.getElementById('glossary').value = "Hide Glossary";
    }
    else {
-      document.getElementById('glossary_terms').style.display = "none";
-      document.getElementById('glossary').value = "Show Glossary";
+	  document.getElementById('glossary_terms').style.display = "none";
+	  document.getElementById('glossary').value = "Show Glossary";
    }
 }
 
@@ -69,7 +69,7 @@ function clickToReplace(termToReplace) {
   textBox.value = textBox.value  + termToReplace;
 
   if (glossary_shown){
-      showGlossary();
+	  showGlossary();
   }
 
   textBox.focus();
@@ -90,15 +90,70 @@ function replaceWithEnter() {
 const REPLACE_CHARS = {
   "\\aleph ": "\u2135 ",
   "\\and ": "\u2227 ",
+  "\\arrow_left ": "\u2190 ",
+  "\\arrow_up ": "\u2191 ",
+  "\\arrow_right ": "\u2192 ",
+  "\\arrow_down ": "\u2193 ",
   "\\complement ": "\u2201 ",
   "\\complex_set ": "\u2102 ",
   "\\cubert ": "\u221B ",
   "\\definition ": "\u2254 ",
+  "\\division_obelus ": "\u00F7 ",
   "\\double_integral ": "\u222C ",
   "\\e ": "\u2147 ",
   "\\empty_set ": "\u2205 ",
   "\\existential_quantifier ": "\u2203 ",
   "\\for_all ": "\u2200 ",
+  "\\greek_lowercase_alpha ": "\u03B1 ",
+  "\\greek_lowercase_beta ": "\u03B2 ",
+  "\\greek_lowercase_gamma ": "\u03B3 ",
+  "\\greek_lowercase_delta ": "\u03B4 ",
+  "\\greek_lowercase_epsilon ": "\u03B5 ",
+  "\\greek_lowercase_zeta ": "\u03B6 ",
+  "\\greek_lowercase_eta ": "\u03B7 ",
+  "\\greek_lowercase_theta ": "\u03B8 ",
+  "\\greek_lowercase_iota ": "\u03B9 ",
+  "\\greek_lowercase_kappa ": "\u03BA ",
+  "\\greek_lowercase_lambda ": "\u03BB ",
+  "\\greek_lowercase_mu ": "\u03BC ",
+  "\\greek_lowercase_nu ": "\u03BD ",
+  "\\greek_lowercase_xi ": "\u03BE ",
+  "\\greek_lowercase_omicron ": "\u03BF ",
+  "\\greek_lowercase_pi ": "\u03C0 ",
+  "\\greek_lowercase_rho ": "\u03C1 ",
+  "\\greek_lowercase_stigma ": "\u03C2 ",
+  "\\greek_lowercase_sigma ": "\u03C3 ",
+  "\\greek_lowercase_tau ": "\u03C4 ",
+  "\\greek_lowercase_upsilon ": "\u03C5 ",
+  "\\greek_lowercase_phi ": "\u03C6 ",
+  "\\greek_lowercase_chi ": "\u03C7 ",
+  "\\greek_lowercase_psi ": "\u03C8 ",
+  "\\greek_lowercase_omega ": "\u03C9 ",
+  "\\greek_uppercase_alpha ": "\u0391 ",
+  "\\greek_uppercase_beta ": "\u0392 ",
+  "\\greek_uppercase_gamma ": "\u0393 ",
+  "\\greek_uppercase_delta ": "\u0394 ",
+  "\\greek_uppercase_epsilon ": "\u0395 ",
+  "\\greek_uppercase_zeta ": "\u0396 ",
+  "\\greek_uppercase_eta ": "\u0397 ",
+  "\\greek_uppercase_theta ": "\u0398 ",
+  "\\greek_uppercase_iota ": "\u0399 ",
+  "\\greek_uppercase_kappa ": "\u039A ",
+  "\\greek_uppercase_lambda ": "\u039B ",
+  "\\greek_uppercase_mu ": "\u039C ",
+  "\\greek_uppercase_nu ": "\u039D ",
+  "\\greek_uppercase_xi ": "\u039E ",
+  "\\greek_uppercase_omicron ": "\u039F ",
+  "\\greek_uppercase_pi ": "\u03A0 ",
+  "\\greek_uppercase_rho ": "\u03A1 ",
+  "\\greek_uppercase_stigma ": "\u03DA ",
+  "\\greek_uppercase_sigma ": "\u03A3 ",
+  "\\greek_uppercase_tau ": "\u03A4 ",
+  "\\greek_uppercase_upsilon ": "\u03A5 ",
+  "\\greek_uppercase_phi ": "\u03A6 ",
+  "\\greek_uppercase_chi ": "\u03A7 ",
+  "\\greek_uppercase_psi ": "\u03A8 ",
+  "\\greek_uppercase_omega ": "\u03A9 ",
   "\\i ": "\u2148 ",
   "\\iff ": "\u2194 ",
   "\\implies ": "\u2192 ",
@@ -123,6 +178,7 @@ const REPLACE_CHARS = {
   "\\product ": "\u220F ",
   "\\proper_subset ": "\u2282 ",
   "\\proper_superset ": "\u2283 ",
+  "\\proportional_to ": "\u221D",
   "\\rational_set ": "\u211A ",
   "\\real_set ": "\u211D ",
   "\\square_root ": "\u221A ",
@@ -135,38 +191,7 @@ const REPLACE_CHARS = {
   "\\union ": "\u222A ",
   "\\universal_quantifier ": "\u2200 ",
   "\\xor ": "\u2295 ",
-  "\\4rt ": "\u221C ",
-  "^0 ": "\u2070 ",
-  "^1 ": "\u00b9 ",
-  "^2 ": "\u00b2 ",
-  "^3 ": "\u00b3 ",
-  "^4 ": "\u2074 ",
-  "^5 ": "\u2075 ",
-  "^6 ": "\u2076 ",
-  "^7 ": "\u2077 ",
-  "^8 ": "\u2078 ",
-  "^9 ": "\u2079 ",
-  "^+ ": "\u207A ",
-  "^- ": "\u207B ",
-  "^= ": "\u207C ",
-  "^( ": "\u207D ",
-  "^) ": "\u207E ",
-  "^n ": "\u207F ",
-  "_0 ": "\u2080 ",
-  "_1 ": "\u2081 ",
-  "_2 ": "\u2082 ",
-  "_3 ": "\u2083 ",
-  "_4 ": "\u2084 ",
-  "_5 ": "\u2085 ",
-  "_6 ": "\u2086 ",
-  "_7 ": "\u2087 ",
-  "_8 ": "\u2088 ",
-  "_9 ": "\u2089 ",
-  "_+ ": "\u208A ",
-  "_- ": "\u208B ",
-  "_= ": "\u208C ",
-  "_( ": "\u208D ",
-  "_) ": "\u208E "
+  "\\4rt ": "\u221C "
 
 };
 
@@ -183,168 +208,168 @@ var switchvar = "";
 function insertLatexChars(currentTextValue) {
   let textValue = currentTextValue;
   for (const entry of Object.entries(REPLACE_CHARS)) {
-    const toReplace = entry[0];
-    const replacement = entry[1];
-    textValue = textValue.replace(toReplace, replacement);
+	const toReplace = entry[0];
+	const replacement = entry[1];
+	textValue = textValue.replace(toReplace, replacement);
   }
   var tempString = "";
   var increment = 0;
   var sug = document.getElementById("suggestions");
   if ((textValue.match(/\\\S+/g))){
-    tempString = (textValue.match(/\\\S+/g)[0]);
-    for (const entry of Object.entries(REPLACE_CHARS)) {
-      if (entry[0].indexOf(tempString.substr(1,)) != -1)
-      {
-        sug.childNodes[2*increment + 1].innerText = (entry[0] + ': ' + entry[1]).toString();
-        increment++;
-      }
-      if (increment == 5)
-      {
-        break;
-      }
-    }
-    for (var i = increment; i < 5; ++i)
-    {
-      sug.childNodes[2*i + 1].innerText = "";
-    }
-  }
-  if ((textValue.match(/\^\S+\s/g))) {
-      for (var i = textValue.indexOf('^') + 1; i < textValue.length; ++i)
-      {
-         if (textValue.charAt(i) == '0') {
-            switchvar = "\u2070";
-         }
-         else if (textValue.charAt(i) == '1') {
-            switchvar = "\u00b9";
-         }
-         else if (textValue.charAt(i) == '2') {
-            switchvar = "\u00b2";
-         }
-         else if (textValue.charAt(i) == '3') {
-            switchvar = "\u00b3";
-         }
-         else if (textValue.charAt(i) == '4') {
-            switchvar = "\u2074";
-         }
-         else if (textValue.charAt(i) == '5') {
-            switchvar = "\u2075";
-         }
-         else if (textValue.charAt(i) == '6') {
-            switchvar = "\u2076";
-         }
-         else if (textValue.charAt(i) == '7') {
-            switchvar = "\u2077";
-         }
-         else if (textValue.charAt(i) == '8') {
-            switchvar = "\u2078";
-         }
-         else if (textValue.charAt(i) == '9') {
-            switchvar = "\u2079";
-         }
-         else if (textValue.charAt(i) == '+') {
-            switchvar = "\u207A";
-         }
-         else if (textValue.charAt(i) == '-') {
-            switchvar = "\u207B";
-         }
-         else if (textValue.charAt(i) == '=') {
-            switchvar = "\u207C";
-         }
-         else if (textValue.charAt(i) == '(') {
-            switchvar = "\u207D";
-         }
-         else if (textValue.charAt(i) == ')') {
-            switchvar = "\u207E";
-         }
-         else if (textValue.charAt(i) == 'n') {
-            switchvar = "\u207F";
-         }
-         else if (textValue.charAt(i) == ' ') {
-            break;
-         }
-         else {
-            switchvar = textValue.charAt(i);
-         }
-         textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
-      }
-      textValue = textValue.substr(0, textValue.indexOf('^')) + textValue.substr(textValue.indexOf('^') + 1, textValue.length);
-      //textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
-      //textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
-      for (var i = 0; i < 5; ++i)
-       {
-         sug.childNodes[2*i + 1].innerText = "";
-       }
-  }
-  else if ((textValue.match(/\_\S+\s/g))) {
-      for (var i = textValue.indexOf('_') + 1; i < textValue.length; ++i)
-      {
-         if (textValue.charAt(i) == '0') {
-            switchvar = "\u2080";
-         }
-         else if (textValue.charAt(i) == '1') {
-            switchvar = "\u2081";
-         }
-         else if (textValue.charAt(i) == '2') {
-            switchvar = "\u2082";
-         }
-         else if (textValue.charAt(i) == '3') {
-            switchvar = "\u2083";
-         }
-         else if (textValue.charAt(i) == '4') {
-            switchvar = "\u2084";
-         }
-         else if (textValue.charAt(i) == '5') {
-            switchvar = "\u2085";
-         }
-         else if (textValue.charAt(i) == '6') {
-            switchvar = "\u2086";
-         }
-         else if (textValue.charAt(i) == '7') {
-            switchvar = "\u2087";
-         }
-         else if (textValue.charAt(i) == '8') {
-            switchvar = "\u2088";
-         }
-         else if (textValue.charAt(i) == '9') {
-            switchvar = "\u2089";
-         }
-         else if (textValue.charAt(i) == '+') {
-            switchvar = "\u208A";
-         }
-         else if (textValue.charAt(i) == '-') {
-            switchvar = "\u208B";
-         }
-         else if (textValue.charAt(i) == '=') {
-            switchvar = "\u208C";
-         }
-         else if (textValue.charAt(i) == '(') {
-            switchvar = "\u208D";
-         }
-         else if (textValue.charAt(i) == ')') {
-            switchvar = "\u208E";
-         }
-         else if (textValue.charAt(i) == ' ') {
-            break;
-         }
-         else {
-            switchvar = textValue.charAt(i);
-         }
-         textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
-      }
-      textValue = textValue.substr(0, textValue.indexOf('_')) + textValue.substr(textValue.indexOf('_') + 1, textValue.length);
-      //textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
-      //textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
-      for (var i = 0; i < 5; ++i)
-       {
-         sug.childNodes[2*i + 1].innerText = "";
-       }
+	tempString = (textValue.match(/\\\S+/g)[0]);
+	for (const entry of Object.entries(REPLACE_CHARS)) {
+	  if (entry[0].indexOf(tempString.substr(1,)) != -1)
+	  {
+		sug.childNodes[2*increment + 1].innerText = (entry[0] + ': ' + entry[1]).toString();
+		increment++;
+	  }
+	  if (increment == 5)
+	  {
+		break;
+	  }
+	}
+	for (var i = increment; i < 5; ++i)
+	{
+	  sug.childNodes[2*i + 1].innerText = "";
+	}
   }
   else
   {
-    for (var i = 0; i < 5; ++i)
-    {
-      sug.childNodes[2*i + 1].innerText = "";
-    }
+	for (var i = 0; i < 5; ++i)
+	{
+	  sug.childNodes[2*i + 1].innerText = "";
+	}
+  }
+  if ((textValue.match(/\^\S+(\s|\_)/g))) {
+	  for (var i = textValue.indexOf('^') + 1; i < textValue.length; ++i)
+	  {
+		 if (textValue.charAt(i) == '0') {
+			switchvar = "\u2070";
+		 }
+		 else if (textValue.charAt(i) == '1') {
+			switchvar = "\u00b9";
+		 }
+		 else if (textValue.charAt(i) == '2') {
+			switchvar = "\u00b2";
+		 }
+		 else if (textValue.charAt(i) == '3') {
+			switchvar = "\u00b3";
+		 }
+		 else if (textValue.charAt(i) == '4') {
+			switchvar = "\u2074";
+		 }
+		 else if (textValue.charAt(i) == '5') {
+			switchvar = "\u2075";
+		 }
+		 else if (textValue.charAt(i) == '6') {
+			switchvar = "\u2076";
+		 }
+		 else if (textValue.charAt(i) == '7') {
+			switchvar = "\u2077";
+		 }
+		 else if (textValue.charAt(i) == '8') {
+			switchvar = "\u2078";
+		 }
+		 else if (textValue.charAt(i) == '9') {
+			switchvar = "\u2079";
+		 }
+		 else if (textValue.charAt(i) == '+') {
+			switchvar = "\u207A";
+		 }
+		 else if (textValue.charAt(i) == '-') {
+			switchvar = "\u207B";
+		 }
+		 else if (textValue.charAt(i) == '=') {
+			switchvar = "\u207C";
+		 }
+		 else if (textValue.charAt(i) == '(') {
+			switchvar = "\u207D";
+		 }
+		 else if (textValue.charAt(i) == ')') {
+			switchvar = "\u207E";
+		 }
+		 else if (textValue.charAt(i) == 'n') {
+			switchvar = "\u207F";
+		 }
+		 else if (textValue.charAt(i) == ' ' || '_') {
+			break;
+		 }
+		 else {
+			switchvar = textValue.charAt(i);
+		 }
+		 textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
+	  }
+	  textValue = textValue.substr(0, textValue.indexOf('^')) + textValue.substr(textValue.indexOf('^') + 1, textValue.length);
+	  //textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
+	  //textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
+	  for (var i = 0; i < 5; ++i)
+	   {
+		 sug.childNodes[2*i + 1].innerText = "";
+	   }
+  }
+  else if ((textValue.match(/\_\S+(\s|\^)/g))) {
+	  for (var i = textValue.indexOf('_') + 1; i < textValue.length; ++i)
+	  {
+		 if (textValue.charAt(i) == '0') {
+			switchvar = "\u2080";
+		 }
+		 else if (textValue.charAt(i) == '1') {
+			switchvar = "\u2081";
+		 }
+		 else if (textValue.charAt(i) == '2') {
+			switchvar = "\u2082";
+		 }
+		 else if (textValue.charAt(i) == '3') {
+			switchvar = "\u2083";
+		 }
+		 else if (textValue.charAt(i) == '4') {
+			switchvar = "\u2084";
+		 }
+		 else if (textValue.charAt(i) == '5') {
+			switchvar = "\u2085";
+		 }
+		 else if (textValue.charAt(i) == '6') {
+			switchvar = "\u2086";
+		 }
+		 else if (textValue.charAt(i) == '7') {
+			switchvar = "\u2087";
+		 }
+		 else if (textValue.charAt(i) == '8') {
+			switchvar = "\u2088";
+		 }
+		 else if (textValue.charAt(i) == '9') {
+			switchvar = "\u2089";
+		 }
+		 else if (textValue.charAt(i) == '+') {
+			switchvar = "\u208A";
+		 }
+		 else if (textValue.charAt(i) == '-') {
+			switchvar = "\u208B";
+		 }
+		 else if (textValue.charAt(i) == '=') {
+			switchvar = "\u208C";
+		 }
+		 else if (textValue.charAt(i) == '(') {
+			switchvar = "\u208D";
+		 }
+		 else if (textValue.charAt(i) == ')') {
+			switchvar = "\u208E";
+		 }
+		 else if (textValue.charAt(i) == ' ' || '^') {
+			break;
+		 }
+		 else {
+			switchvar = textValue.charAt(i);
+		 }
+		 textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
+	  }
+	  textValue = textValue.substr(0, textValue.indexOf('_')) + textValue.substr(textValue.indexOf('_') + 1, textValue.length);
+	  //textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
+	  //textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
+	  for (var i = 0; i < 5; ++i)
+	   {
+		 sug.childNodes[2*i + 1].innerText = "";
+	   }
   }
   return textValue;
 }
@@ -367,39 +392,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const glossary_terms = document.getElementById("glossary_terms");
 
   glossary_terms.addEventListener('click', function(e) {
-      var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 1, e.target.innerHTML.length);
-      latex_input.value += replacementValue;
-      window.scrollTo(0, 0);
+	  var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 1, e.target.innerHTML.length);
+	  latex_input.value += replacementValue;
+	  window.scrollTo(0, 0);
   });
   suggestions.addEventListener('click', function(e) {
-      var textBox = document.getElementById("latex");
-      var textIn = textBox.value;
-      var lastBackSlash = textIn.lastIndexOf("\\");
-      var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 2, e.target.innerHTML.length);
-      textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
-      textBox.focus();
-      for (var i = 0; i < 5; ++i)
-      {
-         suggestions.childNodes[2*i + 1].innerText = "";
-      }
+	  var textBox = document.getElementById("latex");
+	  var textIn = textBox.value;
+	  var lastBackSlash = textIn.lastIndexOf("\\");
+	  var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 2, e.target.innerHTML.length);
+	  textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
+	  textBox.focus();
+	  for (var i = 0; i < 5; ++i)
+	  {
+		 suggestions.childNodes[2*i + 1].innerText = "";
+	  }
   });
   glossary_button.addEventListener('click', function() { showGlossary(); });
   copy_to_clipboard_button.addEventListener('click', function() { copyToClipboard(); });
   help_button.addEventListener('click', function() { showHelpInfo(); });
   latex_input.addEventListener('keydown', function(e) {
-      if (e.keyCode == 13) {
-         replaceWithEnter();
-      }
+	  if (e.keyCode == 13) {
+		 replaceWithEnter();
+	  }
   });
 
 
   latex_input.onkeydown = () => {
-    // setTimeout hack so that we can get updated value of text input
-    setTimeout(() => {
-      const newValue = latex_input.value;
-      const processedValue = insertLatexChars(newValue);
-      latex_input.value = processedValue;
-    }, 0);
+	// setTimeout hack so that we can get updated value of text input
+	setTimeout(() => {
+	  const newValue = latex_input.value;
+	  const processedValue = insertLatexChars(newValue);
+	  latex_input.value = processedValue;
+	}, 0);
   }
 });
 
