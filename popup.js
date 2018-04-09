@@ -208,37 +208,37 @@ function insertLatexChars(currentTextValue) {
       sug.childNodes[2*i + 1].innerText = "";
     }
   }
-  if ((textValue.match(/\^\{.+\}/g))) {
-      for (var i = textValue.indexOf('{') + 1; i < textValue.indexOf('}'); ++i)
+  if ((textValue.match(/\^\S+\s/g))) {
+      for (var i = textValue.indexOf('^') + 1; i < textValue.length; ++i)
       {
-         if (textValue.charAt(i) == 0) {
+         if (textValue.charAt(i) == '0') {
             switchvar = "\u2070";
          }
-         else if (textValue.charAt(i) == 1) {
+         else if (textValue.charAt(i) == '1') {
             switchvar = "\u00b9";
          }
-         else if (textValue.charAt(i) == 2) {
+         else if (textValue.charAt(i) == '2') {
             switchvar = "\u00b2";
          }
-         else if (textValue.charAt(i) == 3) {
+         else if (textValue.charAt(i) == '3') {
             switchvar = "\u00b3";
          }
-         else if (textValue.charAt(i) == 4) {
+         else if (textValue.charAt(i) == '4') {
             switchvar = "\u2074";
          }
-         else if (textValue.charAt(i) == 5) {
+         else if (textValue.charAt(i) == '5') {
             switchvar = "\u2075";
          }
-         else if (textValue.charAt(i) == 6) {
+         else if (textValue.charAt(i) == '6') {
             switchvar = "\u2076";
          }
-         else if (textValue.charAt(i) == 7) {
+         else if (textValue.charAt(i) == '7') {
             switchvar = "\u2077";
          }
-         else if (textValue.charAt(i) == 8) {
+         else if (textValue.charAt(i) == '8') {
             switchvar = "\u2078";
          }
-         else if (textValue.charAt(i) == 9) {
+         else if (textValue.charAt(i) == '9') {
             switchvar = "\u2079";
          }
          else if (textValue.charAt(i) == '+') {
@@ -259,50 +259,53 @@ function insertLatexChars(currentTextValue) {
          else if (textValue.charAt(i) == 'n') {
             switchvar = "\u207F";
          }
+         else if (textValue.charAt(i) == ' ') {
+            break;
+         }
          else {
             switchvar = textValue.charAt(i);
          }
          textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
       }
       textValue = textValue.substr(0, textValue.indexOf('^')) + textValue.substr(textValue.indexOf('^') + 1, textValue.length);
-      textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
-      textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
+      //textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
+      //textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
       for (var i = 0; i < 5; ++i)
        {
          sug.childNodes[2*i + 1].innerText = "";
        }
   }
-  else if ((textValue.match(/\_\{.+\}/g))) {
-      for (var i = textValue.indexOf('{') + 1; i < textValue.indexOf('}'); ++i)
+  else if ((textValue.match(/\_\S+\s/g))) {
+      for (var i = textValue.indexOf('_') + 1; i < textValue.length; ++i)
       {
-         if (textValue.charAt(i) == 0) {
+         if (textValue.charAt(i) == '0') {
             switchvar = "\u2080";
          }
-         else if (textValue.charAt(i) == 1) {
+         else if (textValue.charAt(i) == '1') {
             switchvar = "\u2081";
          }
-         else if (textValue.charAt(i) == 2) {
+         else if (textValue.charAt(i) == '2') {
             switchvar = "\u2082";
          }
-         else if (textValue.charAt(i) == 3) {
+         else if (textValue.charAt(i) == '3') {
             switchvar = "\u2083";
          }
-         else if (textValue.charAt(i) == 4) {
+         else if (textValue.charAt(i) == '4') {
             switchvar = "\u2084";
          }
-         else if (textValue.charAt(i) == 5) {
+         else if (textValue.charAt(i) == '5') {
             switchvar = "\u2085";
          }
-         else if (textValue.charAt(i) == 6) {
+         else if (textValue.charAt(i) == '6') {
             switchvar = "\u2086";
          }
-         else if (textValue.charAt(i) == 7) {
+         else if (textValue.charAt(i) == '7') {
             switchvar = "\u2087";
          }
-         else if (textValue.charAt(i) == 8) {
+         else if (textValue.charAt(i) == '8') {
             switchvar = "\u2088";
          }
-         else if (textValue.charAt(i) == 9) {
+         else if (textValue.charAt(i) == '9') {
             switchvar = "\u2089";
          }
          else if (textValue.charAt(i) == '+') {
@@ -320,14 +323,17 @@ function insertLatexChars(currentTextValue) {
          else if (textValue.charAt(i) == ')') {
             switchvar = "\u208E";
          }
+         else if (textValue.charAt(i) == ' ') {
+            break;
+         }
          else {
             switchvar = textValue.charAt(i);
          }
          textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
       }
       textValue = textValue.substr(0, textValue.indexOf('_')) + textValue.substr(textValue.indexOf('_') + 1, textValue.length);
-      textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
-      textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
+      //textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
+      //textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
       for (var i = 0; i < 5; ++i)
        {
          sug.childNodes[2*i + 1].innerText = "";
