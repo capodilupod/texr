@@ -84,6 +84,20 @@ function replaceWithEnter() {
   textBox.focus();
 }
 
+function tabComplete() {
+  var textBox = document.getElementById("latex");
+  var topSuggestion = document.getElementById("top_suggestion");
+  var textIn = textBox.value;
+  var backSlashOfOrig = textIn.lastIndexOf("\\");
+  var pre = textIn.substring(0, backSlashOfOrig);
+
+  var forReplace = topSuggestion.textContent;
+  var startPos = forReplace.lastIndexOf(":") + 2;
+  var replace = forReplace.substring(startPos);
+  textBox.value = pre + replace;
+  textBox.focus();
+}
+
 //Global variable containing all characters and replacements.
 //Format as "\\COMMAND ": "\uXXXX ", where XXXX is the unicode.
 //Try to keep in alphabetical order.
@@ -415,6 +429,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	  if (e.keyCode == 13) {
 		 replaceWithEnter();
 	  }
+  });
+
+  latex_input.addEventListener('keydown', function(e) {
+    if (e.keyCode == 9) {
+      e.preventDefault();
+      e.stopPropagation();
+      tabComplete();
+    }
   });
 
 
