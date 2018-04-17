@@ -104,71 +104,27 @@ function tabComplete() {
 const REPLACE_CHARS = {
   "\\aleph ": "\u2135 ",
   "\\and ": "\u2227 ",
+  "\\angle ": "\u2220 ",
   "\\arrow_left ": "\u2190 ",
   "\\arrow_up ": "\u2191 ",
   "\\arrow_right ": "\u2192 ",
   "\\arrow_down ": "\u2193 ",
+  "\\asterisk_operator ": "\u2217 ",
   "\\complement ": "\u2201 ",
   "\\complex_set ": "\u2102 ",
   "\\cubert ": "\u221B ",
   "\\definition ": "\u2254 ",
+  "\\degree ": "\u00B0 ",
   "\\division_obelus ": "\u00F7 ",
+  "\\dot ": "\u22C5 ",
   "\\double_integral ": "\u222C ",
-  "\\e ": "\u2147 ",
+  "\\double_prime ": "\u2033 ",
+  "\\e_constant ": "\u2147 ",
   "\\empty_set ": "\u2205 ",
   "\\existential_quantifier ": "\u2203 ",
   "\\for_all ": "\u2200 ",
-  "\\greek_lowercase_alpha ": "\u03B1 ",
-  "\\greek_lowercase_beta ": "\u03B2 ",
-  "\\greek_lowercase_gamma ": "\u03B3 ",
-  "\\greek_lowercase_delta ": "\u03B4 ",
-  "\\greek_lowercase_epsilon ": "\u03B5 ",
-  "\\greek_lowercase_zeta ": "\u03B6 ",
-  "\\greek_lowercase_eta ": "\u03B7 ",
-  "\\greek_lowercase_theta ": "\u03B8 ",
-  "\\greek_lowercase_iota ": "\u03B9 ",
-  "\\greek_lowercase_kappa ": "\u03BA ",
-  "\\greek_lowercase_lambda ": "\u03BB ",
-  "\\greek_lowercase_mu ": "\u03BC ",
-  "\\greek_lowercase_nu ": "\u03BD ",
-  "\\greek_lowercase_xi ": "\u03BE ",
-  "\\greek_lowercase_omicron ": "\u03BF ",
-  "\\greek_lowercase_pi ": "\u03C0 ",
-  "\\greek_lowercase_rho ": "\u03C1 ",
-  "\\greek_lowercase_stigma ": "\u03C2 ",
-  "\\greek_lowercase_sigma ": "\u03C3 ",
-  "\\greek_lowercase_tau ": "\u03C4 ",
-  "\\greek_lowercase_upsilon ": "\u03C5 ",
-  "\\greek_lowercase_phi ": "\u03C6 ",
-  "\\greek_lowercase_chi ": "\u03C7 ",
-  "\\greek_lowercase_psi ": "\u03C8 ",
-  "\\greek_lowercase_omega ": "\u03C9 ",
-  "\\greek_uppercase_alpha ": "\u0391 ",
-  "\\greek_uppercase_beta ": "\u0392 ",
-  "\\greek_uppercase_gamma ": "\u0393 ",
-  "\\greek_uppercase_delta ": "\u0394 ",
-  "\\greek_uppercase_epsilon ": "\u0395 ",
-  "\\greek_uppercase_zeta ": "\u0396 ",
-  "\\greek_uppercase_eta ": "\u0397 ",
-  "\\greek_uppercase_theta ": "\u0398 ",
-  "\\greek_uppercase_iota ": "\u0399 ",
-  "\\greek_uppercase_kappa ": "\u039A ",
-  "\\greek_uppercase_lambda ": "\u039B ",
-  "\\greek_uppercase_mu ": "\u039C ",
-  "\\greek_uppercase_nu ": "\u039D ",
-  "\\greek_uppercase_xi ": "\u039E ",
-  "\\greek_uppercase_omicron ": "\u039F ",
-  "\\greek_uppercase_pi ": "\u03A0 ",
-  "\\greek_uppercase_rho ": "\u03A1 ",
-  "\\greek_uppercase_stigma ": "\u03DA ",
-  "\\greek_uppercase_sigma ": "\u03A3 ",
-  "\\greek_uppercase_tau ": "\u03A4 ",
-  "\\greek_uppercase_upsilon ": "\u03A5 ",
-  "\\greek_uppercase_phi ": "\u03A6 ",
-  "\\greek_uppercase_chi ": "\u03A7 ",
-  "\\greek_uppercase_psi ": "\u03A8 ",
-  "\\greek_uppercase_omega ": "\u03A9 ",
-  "\\i ": "\u2148 ",
+  "\\gradient ": "\u2207 ",
+  "\\i_constant ": "\u2148 ",
   "\\iff ": "\u2194 ",
   "\\implies ": "\u2192 ",
   "\\in ": "\u2208 ",
@@ -176,8 +132,12 @@ const REPLACE_CHARS = {
   "\\integer_set ": "\u2124 ",
   "\\integral ": "\u222b ",
   "\\intersect ": "\u2229 ",
+  "\\measured_angle ": "\u2221 ",
+  "\\minus_plus ": "\u2213 ",
+  "\\multiplication_sign ": "\u00D7 ",
   "\\nand ": "\u22BC ",
   "\\natural_set ": "\u2115 ",
+  "\\nonexistential_quantifier ": "\u2204 ",
   "\\nor ": "\u22BD ",
   "\\not ": "\u00AC ",
   "\\not_in ": "\u2209 ",
@@ -187,25 +147,85 @@ const REPLACE_CHARS = {
   "\\not_subset ": "\u2288 ",
   "\\not_superset ": "\u2289 ",
   "\\or ": "\u2228 ",
-  "\\pi ": "\u03C0 ",
+  "\\partial_derivative ": "\u2202 ",
+  "\\pi_constant ": "\u03C0 ",
+  "\\plus_minus ": "\u00B1 ",
   "\\power_set ": "\u2118 ",
+  "\\prime ": "\u2032 ",
+  "\\or ": "\u2228 ",
+  "\\or ": "\u2228 ",
+  "\\perpendicular_to ": "\u27C2 ",
   "\\product ": "\u220F ",
   "\\proper_subset ": "\u2282 ",
   "\\proper_superset ": "\u2283 ",
-  "\\proportional_to ": "\u221D",
+  "\\proportional_to ": "\u221D ",
   "\\rational_set ": "\u211A ",
   "\\real_set ": "\u211D ",
+  "\\right_angle ": "\u221F ",
+  "\\spherical_angle ": "\u2223 ",
   "\\square_root ": "\u221A ",
   "\\sqrt ": "\u221A ",
   "\\subset ": "\u2286 ",
   "\\sum ": "\u2211 ",
   "\\superset ": "\u2287 ",
   "\\there_exists ": "\u2203 ",
+  "\\there_does_not_exist ": "\u2204 ",
   "\\triple_integral ": "\u222D ",
+  "\\triple_prime ": "\u2034 ",
   "\\union ": "\u222A ",
   "\\universal_quantifier ": "\u2200 ",
   "\\xor ": "\u2295 ",
-  "\\4rt ": "\u221C "
+  "\\4rt ": "\u221C ",
+  "\\alpha ": "\u03B1 ",
+  "\\beta ": "\u03B2 ",
+  "\\gamma ": "\u03B3 ",
+  "\\delta ": "\u03B4 ",
+  "\\epsilon ": "\u03B5 ",
+  "\\zeta ": "\u03B6 ",
+  "\\eta ": "\u03B7 ",
+  "\\theta ": "\u03B8 ",
+  "\\iota ": "\u03B9 ",
+  "\\kappa ": "\u03BA ",
+  "\\lambda ": "\u03BB ",
+  "\\mu ": "\u03BC ",
+  "\\nu ": "\u03BD ",
+  "\\xi ": "\u03BE ",
+  "\\omicron ": "\u03BF ",
+  "\\pi ": "\u03C0 ",
+  "\\rho ": "\u03C1 ",
+  "\\stigma ": "\u03C2 ",
+  "\\sigma ": "\u03C3 ",
+  "\\tau ": "\u03C4 ",
+  "\\upsilon ": "\u03C5 ",
+  "\\phi ": "\u03C6 ",
+  "\\chi ": "\u03C7 ",
+  "\\psi ": "\u03C8 ",
+  "\\omega ": "\u03C9 ",
+  "\\alpha_upper ": "\u0391 ",
+  "\\beta_upper ": "\u0392 ",
+  "\\gamma_upper ": "\u0393 ",
+  "\\delta_upper ": "\u0394 ",
+  "\\epsilon_upper ": "\u0395 ",
+  "\\zeta_upper ": "\u0396 ",
+  "\\eta_upper ": "\u0397 ",
+  "\\theta_upper ": "\u0398 ",
+  "\\iota_upper ": "\u0399 ",
+  "\\kappa_upper ": "\u039A ",
+  "\\lambda_upper ": "\u039B ",
+  "\\mu_upper ": "\u039C ",
+  "\\nu_upper ": "\u039D ",
+  "\\xi_upper ": "\u039E ",
+  "\\omicron_upper ": "\u039F ",
+  "\\pi_upper ": "\u03A0 ",
+  "\\rho_upper ": "\u03A1 ",
+  "\\stigma_upper ": "\u03DA ",
+  "\\sigma_upper ": "\u03A3 ",
+  "\\tau_upper ": "\u03A4 ",
+  "\\upsilon_upper ": "\u03A5 ",
+  "\\phi_upper ": "\u03A6 ",
+  "\\chi_upper ": "\u03A7 ",
+  "\\psi_upper ": "\u03A8 ",
+  "\\omega_upper ": "\u03A9 "
 
 };
 
@@ -305,6 +325,9 @@ function insertLatexChars(currentTextValue) {
 		 else if (textValue.charAt(i) == 'n') {
 			switchvar = "\u207F";
 		 }
+		 else if (textValue.charAt(i) == 'o') {
+			switchvar = "\u00B0";
+		 }
 		 else if (textValue.charAt(i) == ' ' || '_') {
 			break;
 		 }
@@ -314,8 +337,6 @@ function insertLatexChars(currentTextValue) {
 		 textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
 	  }
 	  textValue = textValue.substr(0, textValue.indexOf('^')) + textValue.substr(textValue.indexOf('^') + 1, textValue.length);
-	  //textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
-	  //textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
 	  for (var i = 0; i < 5; ++i)
 	   {
 		 sug.childNodes[2*i + 1].innerText = "";
@@ -378,8 +399,6 @@ function insertLatexChars(currentTextValue) {
 		 textValue = textValue.substr(0, i) + switchvar + textValue.substr(i + 1, textValue.length);
 	  }
 	  textValue = textValue.substr(0, textValue.indexOf('_')) + textValue.substr(textValue.indexOf('_') + 1, textValue.length);
-	  //textValue = textValue.substr(0, textValue.indexOf('{')) + textValue.substr(textValue.indexOf('{') + 1, textValue.length);
-	  //textValue = textValue.substr(0, textValue.indexOf('}')) + textValue.substr(textValue.indexOf('}') + 1, textValue.length);
 	  for (var i = 0; i < 5; ++i)
 	   {
 		 sug.childNodes[2*i + 1].innerText = "";
@@ -387,15 +406,6 @@ function insertLatexChars(currentTextValue) {
   }
   return textValue;
 }
-
-// This extension loads the saved background color for the current tab if one
-// exists. The user can select a new background color from the dropdown for the
-// current page, and it will be saved as part of the extension's isolated
-// storage. The chrome.storage API is used for this purpose. This is different
-// from the window.localStorage API, which is synchronous and stores data bound
-// to a document's origin. Also, using chrome.storage.sync instead of
-// chrome.storage.local allows the extension data to be synced across multiple
-// user devices.
 
 document.addEventListener('DOMContentLoaded', () => {
   const glossary_button = document.getElementById("glossary");
@@ -449,168 +459,3 @@ document.addEventListener('DOMContentLoaded', () => {
 	}, 0);
   }
 });
-
-
-/*
-  // Creating listeners for all buttons in glossary. Very repetitive and inefficient
-  // but was having trouble otherwise.
-  const aleph_button = document.getElementById("aleph");
-  const and_button = document.getElementById("and");
-  const complement_button = document.getElementById("complement");
-  const complex_set_button = document.getElementById("complex_set");
-  const cubert_button = document.getElementById("cubert");
-  const definition_button = document.getElementById("definition");
-  const double_integral_button = document.getElementById("double_integral");
-  const e_button = document.getElementById("e");
-  const empty_set_button = document.getElementById("empty_set");
-  const existential_quantifier_button = document.getElementById("existential_quantifier");
-  const for_all_button = document.getElementById("for_all");
-  const i_button = document.getElementById("i");
-  const iff_button = document.getElementById("iff");
-  const implies_button = document.getElementById("implies");
-  const in_button = document.getElementById("in");
-  const infinity_button = document.getElementById("infinity");
-  const integer_set_button = document.getElementById("integer_set");
-  const integral_button = document.getElementById("integral");
-  const intersect_button = document.getElementById("intersect");
-  const nand_button = document.getElementById("nand");
-  const natural_set_button = document.getElementById("natural_set");
-  const nor_button = document.getElementById("nor");
-  const not_button = document.getElementById("not");
-  const not_in_button = document.getElementById("not_in");
-  const not_equal_button = document.getElementById("not_equal");
-  const not_proper_subset_button = document.getElementById("not_proper_subset");
-  const not_proper_superset_button = document.getElementById("not_proper_superset");
-  const not_subset_button = document.getElementById("not_subset");
-  const not_superset_button = document.getElementById("not_superset");
-  const or_button = document.getElementById("or");
-  const pi_button = document.getElementById("pi");
-  const power_set_button = document.getElementById("power_set");
-  const product_button = document.getElementById("product");
-  const proper_subset_button = document.getElementById("proper_subset");
-  const proper_superset_button = document.getElementById("proper_superset");
-  const rational_set_button = document.getElementById("rational_set");
-  const real_set_button = document.getElementById("real_set");
-  const square_root_button = document.getElementById("square_root");
-  const sqrt_button = document.getElementById("sqrt");
-  const subset_button = document.getElementById("subset");
-  const sum_button = document.getElementById("sum");
-  const superset_button = document.getElementById("superset");
-  const there_exists_button = document.getElementById("there_exists");
-  const triple_integral_button = document.getElementById("triple_integral");
-  const union_button = document.getElementById("union");
-  const universal_quantifier = document.getElementById("universal_quantifier");
-  const xor_button = document.getElementById("xor");
-  const four_rt_button = document.getElementById("4rt");
-  const super_0_button = document.getElementById("^0");
-  const super_1_button = document.getElementById("^1");
-  const super_2_button = document.getElementById("^2");
-  const super_3_button = document.getElementById("^3");
-  const super_4_button = document.getElementById("^4");
-  const super_5_button = document.getElementById("^5");
-  const super_6_button = document.getElementById("^6");
-  const super_7_button = document.getElementById("^7");
-  const super_8_button = document.getElementById("^8");
-  const super_9_button = document.getElementById("^9");
-  const super_plus_button = document.getElementById("^+");
-  const super_minus_button = document.getElementById("^-");
-  const super_equal_button = document.getElementById("^=");
-  const super_left_paren_button = document.getElementById("^(");
-  const super_right_paren_button = document.getElementById("^)");
-  const super_n_button = document.getElementById("^n");
-  const sub_0_button = document.getElementById("_0");
-  const sub_1_button = document.getElementById("_1");
-  const sub_2_button = document.getElementById("_2");
-  const sub_3_button = document.getElementById("_3");
-  const sub_4_button = document.getElementById("_4");
-  const sub_5_button = document.getElementById("_5");
-  const sub_6_button = document.getElementById("_6");
-  const sub_7_button = document.getElementById("_7");
-  const sub_8_button = document.getElementById("_8");
-  const sub_9_button = document.getElementById("_9");
-  const sub_plus_button = document.getElementById("_+");
-  const sub_minus_button = document.getElementById("_-");
-  const sub_equals_button = document.getElementById("_=");
-  const sub_left_paren_button = document.getElementById("_(");
-  const sub_right_paren_button = document.getElementById("_)");
-
-  aleph_button.addEventListener('click', function() { clickToReplace("\u2135"); });
-  and_button.addEventListener('click', function() { clickToReplace("\u2227"); });
-  complement_button.addEventListener('click', function() { clickToReplace("\u2201"); });
-  complex_set_button.addEventListener('click', function() { clickToReplace("\u2102"); });
-  cubert_button.addEventListener('click', function() { clickToReplace("\u221B"); });
-  definition_button.addEventListener('click', function() { clickToReplace("\u2254"); });
-  double_integral_button.addEventListener('click', function() { clickToReplace("\u222C"); });
-  e_button.addEventListener('click', function() { clickToReplace("\u2147"); });
-  empty_set_button.addEventListener('click', function() { clickToReplace("\u2205"); });
-  existential_quantifier.addEventListener('click', function() { clickToReplace("\u2203"); });
-  for_all_button.addEventListener('click', function() { clickToReplace("\u2200"); });
-  i_button.addEventListener('click', function() { clickToReplace("\u2148"); });
-  iff_button.addEventListener('click', function() { clickToReplace("\u2194"); });
-  implies_button.addEventListener('click', function() { clickToReplace("\u2192"); });
-  in_button.addEventListener('click', function() { clickToReplace("\u2208"); });
-  infinity_button.addEventListener('click', function() { clickToReplace("\u221E"); });
-  integer_set_button.addEventListener('click', function() { clickToReplace("\u2124"); });
-  integral_button.addEventListener('click', function() { clickToReplace("\u222b"); });
-  intersect_button.addEventListener('click', function() { clickToReplace("\u2229"); });
-  nand_button.addEventListener('click', function() { clickToReplace("\u22BC"); });
-  natural_set_button.addEventListener('click', function() { clickToReplace("\u2155"); });
-  nor_button.addEventListener('click', function() { clickToReplace("\u22BD"); }); 
-  not_button.addEventListener('click', function() { clickToReplace("\u00AC"); });
-  not_in_button.addEventListener('click', function() { clickToReplace("\u2209"); });
-  not_equal_button.addEventListener('click', function() { clickToReplace("\u2260"); });
-  not_proper_subset_button.addEventListener('click', function() { clickToReplace("\u2248"); });
-  not_proper_superset_button.addEventListener('click', function() { clickToReplace("\u2285"); });
-  not_subset_button.addEventListener('click', function() { clickToReplace("\u2288"); });
-  not_superset_button.addEventListener('click', function() { clickToReplace("\u2289"); });
-  or_button.addEventListener('click', function() { clickToReplace("\u2228"); });
-  pi_button.addEventListener('click', function() { clickToReplace("\u03C0"); });
-  power_set_button.addEventListener('click', function() { clickToReplace("\u2118"); });
-  product_button.addEventListener('click', function() { clickToReplace("\u220F"); });
-  proper_subset_button.addEventListener('click', function() { clickToReplace("\u2282"); });
-  proper_superset_button.addEventListener('click', function() { clickToReplace("\u2283"); });
-  rational_set_button.addEventListener('click', function() { clickToReplace("\u211A"); });
-  real_set_button.addEventListener('click', function() { clickToReplace("\u211D"); });
-  square_root_button.addEventListener('click', function() { clickToReplace("\u221A"); });
-  sqrt_button.addEventListener('click', function() { clickToReplace("\u221A"); });
-  subset_button.addEventListener('click', function() { clickToReplace("\u2286"); });
-  sum_button.addEventListener('click', function() { clickToReplace("\u2211"); });
-  superset_button.addEventListener('click', function() { clickToReplace("\u2287"); });
-  there_exists_button.addEventListener('click', function() { clickToReplace("\u2203"); });
-  triple_integral_button.addEventListener('click', function() { clickToReplace("\u222D"); });
-  union_button.addEventListener('click', function() { clickToReplace("\u222A"); });
-  universal_quantifier.addEventListener('click', function() { clickToReplace("\u2200"); });
-  xor_button.addEventListener('click', function() { clickToReplace("\u2995"); });
-  four_rt_button.addEventListener('click', function() { clickToReplace("\u221C"); });
-  super_0_button.addEventListener('click', function() { clickToReplace("\u2070"); });
-  super_1_button.addEventListener('click', function() { clickToReplace("\u00b9"); });
-  super_2_button.addEventListener('click', function() { clickToReplace("\u00b2"); });
-  super_3_button.addEventListener('click', function() { clickToReplace("\u00b3"); });
-  super_4_button.addEventListener('click', function() { clickToReplace("\u2074"); });
-  super_5_button.addEventListener('click', function() { clickToReplace("\u2075"); });
-  super_6_button.addEventListener('click', function() { clickToReplace("\u2076"); });
-  super_7_button.addEventListener('click', function() { clickToReplace("\u2077"); });
-  super_8_button.addEventListener('click', function() { clickToReplace("\u2078"); });
-  super_9_button.addEventListener('click', function() { clickToReplace("\u2079"); });
-  super_plus_button.addEventListener('click', function() { clickToReplace("\u207A"); });
-  super_minus_button.addEventListener('click', function() { clickToReplace("\u207B"); });
-  super_equal_button.addEventListener('click', function() { clickToReplace("\u207C"); });
-  super_left_paren_button.addEventListener('click', function() { clickToReplace("\u207D"); });
-  super_right_paren_button.addEventListener('click', function() { clickToReplace("\u207E"); });
-  super_n_button.addEventListener('click', function() { clickToReplace("\u207F"); });
-  sub_0_button.addEventListener('click', function() { clickToReplace("\u2080"); });
-  sub_1_button.addEventListener('click', function() { clickToReplace("\u2081"); });
-  sub_2_button.addEventListener('click', function() { clickToReplace("\u2082"); });
-  sub_3_button.addEventListener('click', function() { clickToReplace("\u2083"); });
-  sub_4_button.addEventListener('click', function() { clickToReplace("\u2084"); });
-  sub_5_button.addEventListener('click', function() { clickToReplace("\u2085"); });
-  sub_6_button.addEventListener('click', function() { clickToReplace("\u2086"); });
-  sub_7_button.addEventListener('click', function() { clickToReplace("\u2087"); });
-  sub_8_button.addEventListener('click', function() { clickToReplace("\u2088"); });
-  sub_9_button.addEventListener('click', function() { clickToReplace("\u2089"); });
-  sub_plus_button.addEventListener('click', function() { clickToReplace("\u208A"); });
-  sub_minus_button.addEventListener('click', function() { clickToReplace("\u208B"); });
-  sub_equals_button.addEventListener('click', function() { clickToReplace("\u208C"); });
-  sub_left_paren_button.addEventListener('click', function() { clickToReplace("\u208D"); });
-  sub_right_paren_button.addEventListener('click', function() { clickToReplace("\u208E"); });
-  */
