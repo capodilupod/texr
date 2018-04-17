@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Texr",
-  "description": "This extension allows the user to easily type math symbols in a browser.",
+  "name": "TeXr",
+  "description": "Making it easy to type math inline, anywhere.",
   "version": "1.0",
 
   "browser_action": {
