@@ -26,6 +26,7 @@ function placeCaretAtEnd(el) {
 //Effects: Initializes the extension window.
 setInterval(function () {
 	focus = document.querySelector(":focus");
+	console.log(focus.contentEditable);
 	//alert(focus ? focus.id + ';' + focus.type + ';' + focus.role + ';' + focus.innerHTML + ';' + focus.innerText : "none");
 }, 100);
 
@@ -44,16 +45,16 @@ document.body.onkeyup = function(e)
 			}
 			catch(err)
 			{
-				newValue = focus.innerHTML;
-				newValue = newValue.replace("&nbsp;", " ");
-				processedValue = insertLatexChars(newValue);
-				focus.innerHTML = processedValue + "&nbsp;";
-				//focus.innerHTML = focus.innerHTML.replace("  ", " ");
-				focus.innerHTML = focus.innerHTML.replace(" &nbsp;", "&nbsp;");
-				if (e.keyCode == 189 || e.keyCode == 54)
-					focus.innerHTML = focus.innerHTML.replace("&nbsp;", "");
-				placeCaretAtEnd(focus);
-				//alert(newValue + ';' + processedValue);
+					newValue = focus.innerHTML;
+					newValue = newValue.replace("&nbsp;", " ");
+					processedValue = insertLatexChars(newValue);
+					focus.innerHTML = processedValue + "&nbsp;";
+					//focus.innerHTML = focus.innerHTML.replace("  ", " ");
+					focus.innerHTML = focus.innerHTML.replace(" &nbsp;", "&nbsp;");
+					if (e.keyCode == 189 || e.keyCode == 54)
+						focus.innerHTML = focus.innerHTML.replace("&nbsp;", "");
+					placeCaretAtEnd(focus);
+					//alert(newValue + ';' + processedValue);
 			}
 	    }
 	}
