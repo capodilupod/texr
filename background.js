@@ -31,7 +31,7 @@ setInterval(function () {
 
 document.body.onkeyup = function(e)
 {
-    if(e.keyCode == 32 || e.keyCode == 13)
+    if(e.keyCode == 32 || e.keyCode == 13 || (e.keyCode == 189) || (e.keyCode == 54))
     {
         if (focus != null)
 		{
@@ -50,6 +50,8 @@ document.body.onkeyup = function(e)
 				focus.innerHTML = processedValue + "&nbsp;";
 				//focus.innerHTML = focus.innerHTML.replace("  ", " ");
 				focus.innerHTML = focus.innerHTML.replace(" &nbsp;", "&nbsp;");
+				if (e.keyCode == 189 || e.keyCode == 54)
+					focus.innerHTML = focus.innerHTML.replace("&nbsp;", "");
 				placeCaretAtEnd(focus);
 				//alert(newValue + ';' + processedValue);
 			}
