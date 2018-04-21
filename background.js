@@ -28,7 +28,7 @@ setInterval(function () {
 	focus = document.querySelector(":focus");
 	//console.log(focus.contentEditable);
 	//alert(focus ? focus.id + ';' + focus.type + ';' + focus.role + ';' + focus.innerHTML + ';' + focus.innerText : "none");
-}, 100);
+}, 10);
 
 document.body.onkeyup = function(e)
 {
@@ -51,6 +51,7 @@ document.body.onkeyup = function(e)
 				focus.innerHTML = processedValue + "&nbsp;";
 				//focus.innerHTML = focus.innerHTML.replace("  ", " ");
 				focus.innerHTML = focus.innerHTML.replace(" &nbsp;", "&nbsp;");
+				focus.innerHTML = focus.innerHTML.replace("&nbsp;&nbsp;", "&nbsp;");
 				if (e.keyCode == 189 || e.keyCode == 54)
 					focus.innerHTML = focus.innerHTML.replace("&nbsp;", "");
 				placeCaretAtEnd(focus);
