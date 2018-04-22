@@ -75,163 +75,165 @@
         -
         - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
         -->
-        <script src="popup.js"></script>
+        <script src="background.js"></script>
     </head>
-    <div>
-        <ul id="suggestions">
-            <h1 id="top_suggestion" style="color:white;font-size:18px;"></h1>
-            <h1 style="color:white;font-size:18px;"></h1>
-            <h1 style="color:white;font-size:18px;"></h1>
-            <h1 style="color:white;font-size:18px;"></h1>
-            <h1 style="color:white;font-size:18px;"></h1>
-            <h1 style="color:white;font-size:18px;"></h1>
-            <h1 style="color:white;font-size:18px;"></h1>
-            <h1 style="color:white;font-size:18px;"></h1>
-            <h1 style="color:white;font-size:18px;"></h1>
-            <h1 style="color:white;font-size:18px;"></h1>
-        </ul>
-    </div>
+    <body>
+        <div>
+            <ul id="suggestions">
+                <h1 id="top_suggestion" style="color:white;font-size:18px;"></h1>
+                <h1 style="color:white;font-size:18px;"></h1>
+                <h1 style="color:white;font-size:18px;"></h1>
+                <h1 style="color:white;font-size:18px;"></h1>
+                <h1 style="color:white;font-size:18px;"></h1>
+                <h1 style="color:white;font-size:18px;"></h1>
+                <h1 style="color:white;font-size:18px;"></h1>
+                <h1 style="color:white;font-size:18px;"></h1>
+                <h1 style="color:white;font-size:18px;"></h1>
+                <h1 style="color:white;font-size:18px;"></h1>
+            </ul>
+        </div>
 
-    <div id="three_buttons">
-        <input type="button" id="glossary" style="font-size:18px" value="Show Glossary"/>
-        <input type="button" id="copy_to_clipboard" style="font-size:18px" value="Copy to Clipboard"/>
-        <input type="button" id="help" style="font-size:18px" value="Help"/>
-    </div>
 
-    <div id="glossary_terms" style="color:white;display:none;font-size:24px" class="terms">
-        <h3>Unary and Binary Operators </h3>
-        <h4>plus_minus: &#x00B1</h4>
-        <h4>minus_plus: &#x2213</h4>
-        <h4>multiplication_sign: &#x00D7</h4>
-        <h4>division_obelus: &#x00F7</h4>
-        <h4>square_root: &#x221A</h4>
-        <h4>cubert: &#x221B</h4>
-        <h4>4rt: &#x221C</h4>
+        <div id="three_buttons">
+            <input type="button" id="glossary" style="font-size:18px" value="Show Glossary"/>
+            <input type="button" id="copy_to_clipboard" style="font-size:18px" value="Copy to Clipboard"/>
+            <input type="button" id="help" style="font-size:18px" value="Help"/>
+        </div>
 
-        <h3>Logic </h3>
-        <h4>and: &#x2227</h4>
-        <h4>arrow_left: &#x2190</h4>
-        <h4>arrow_up: &#x2191</h4>
-        <h4>arrow_right: &#x2192</h4>
-        <h4>arrow_down: &#x2193</h4>
-        <h4>definition: &#x2254</h4>
-        <h4>existential_quantifier: &#x2203</h4>
-        <h4>iff: &#x2194</h4>
-        <h4>implies: &#x2192</h4>
-        <h4>infinity: &#x221E</h4>
-        <h4>nand: &#x22BC</h4>
-        <h4>nonexistential_quantifier: &#x2204</h4>
-        <h4>nor: &#x22BD</h4>
-        <h4>not: &#x00AC</h4>
-        <h4>not_equal: &#x2260</h4>
-        <h4>or: &#x2228</h4>
-        <h4>proportional_to: &#x221D</h4>
-        <h4>universal_quantifier: &#x2200</h4>
-        <h4>xor: &#x2295</h4>
+        <div id="glossary_terms" style="color:white;display:none;font-size:24px" class="terms">
+            <h3>Unary and Binary Operators </h3>
+            <h4>plus_minus: &#x00B1</h4>
+            <h4>minus_plus: &#x2213</h4>
+            <h4>multiplication_sign: &#x00D7</h4>
+            <h4>division_obelus: &#x00F7</h4>
+            <h4>square_root: &#x221A</h4>
+            <h4>cubert: &#x221B</h4>
+            <h4>4rt: &#x221C</h4>
 
-        <h3>Set Theory </h3>
-        <h4>aleph: &#x2135</h4>
-        <h4>asterisk_operator: &#x2217</h4>
-        <h4>complement: &#x2201</h4>
-        <h4>in: &#x2208</h4>
-        <h4>intersect: &#x2229</h4>
-        <h4>not_in: &#x2209</h4>
-        <h4>not_proper_subset: &#x2284</h4>
-        <h4>not_proper_superset: &#x2285</h4>
-        <h4>not_subset: &#x2288</h4>
-        <h4>not_superset: &#x2289</h4>
-        <h4>proper_subset: &#x2282</h4>
-        <h4>proper_superset: &#x2283</h4>
-        <h4>subset: &#x2286</h4>
-        <h4>superset: &#x2287</h4>
-        <h4>union: &#x222A</h4>
+            <h3>Logic </h3>
+            <h4>and: &#x2227</h4>
+            <h4>arrow_left: &#x2190</h4>
+            <h4>arrow_up: &#x2191</h4>
+            <h4>arrow_right: &#x2192</h4>
+            <h4>arrow_down: &#x2193</h4>
+            <h4>definition: &#x2254</h4>
+            <h4>existential_quantifier: &#x2203</h4>
+            <h4>iff: &#x2194</h4>
+            <h4>implies: &#x2192</h4>
+            <h4>infinity: &#x221E</h4>
+            <h4>nand: &#x22BC</h4>
+            <h4>nonexistential_quantifier: &#x2204</h4>
+            <h4>nor: &#x22BD</h4>
+            <h4>not: &#x00AC</h4>
+            <h4>not_equal: &#x2260</h4>
+            <h4>or: &#x2228</h4>
+            <h4>proportional_to: &#x221D</h4>
+            <h4>universal_quantifier: &#x2200</h4>
+            <h4>xor: &#x2295</h4>
 
-        <h3>Common Sets </h3>
-        <h4>complex_set: &#x2102</h4>
-        <h4>empty_set: &#x2205</h4>
-        <h4>integer_set: &#x2124</h4>
-        <h4>natural_set: &#x2115</h4>
-        <h4>power_set: &#x2118</h4>
-        <h4>rational_set: &#x211A</h4>
-        <h4>real_set: &#x211D</h4>
+            <h3>Set Theory </h3>
+            <h4>aleph: &#x2135</h4>
+            <h4>asterisk_operator: &#x2217</h4>
+            <h4>complement: &#x2201</h4>
+            <h4>in: &#x2208</h4>
+            <h4>intersect: &#x2229</h4>
+            <h4>not_in: &#x2209</h4>
+            <h4>not_proper_subset: &#x2284</h4>
+            <h4>not_proper_superset: &#x2285</h4>
+            <h4>not_subset: &#x2288</h4>
+            <h4>not_superset: &#x2289</h4>
+            <h4>proper_subset: &#x2282</h4>
+            <h4>proper_superset: &#x2283</h4>
+            <h4>subset: &#x2286</h4>
+            <h4>superset: &#x2287</h4>
+            <h4>union: &#x222A</h4>
 
-        <h3>Calculus </h3>
-        <h4>degree: &#x00B0</h4>
-        <h4>double_integral: &#x222C</h4>
-        <h4>double_prime: &#x2033</h4>
-        <h4>gradient: &#x2207</h4>
-        <h4>integral: &#x222b</h4>
-        <h4>partial_derivative: &#x2202</h4>
-        <h4>prime: &#x2032</h4>
-        <h4>product: &#x220F</h4>
-        <h4>sum: &#x2211</h4>
-        <h4>triple_integral: &#x222D</h4>
-        <h4>triple_prime: &#x2034</h4>
+            <h3>Common Sets </h3>
+            <h4>complex_set: &#x2102</h4>
+            <h4>empty_set: &#x2205</h4>
+            <h4>integer_set: &#x2124</h4>
+            <h4>natural_set: &#x2115</h4>
+            <h4>power_set: &#x2118</h4>
+            <h4>rational_set: &#x211A</h4>
+            <h4>real_set: &#x211D</h4>
 
-        <h3>Geometry </h3>
-        <h4>angle: &#x2220</h4>
-        <h4>measured_angle: &#x2221</h4>
-        <h4>spherical_angle: &#x2222</h4>
-        <h4>perpendicular_to: &#x27C2</h4>
-        <h4>right_angle: &#x221F</h4>
+            <h3>Calculus </h3>
+            <h4>degree: &#x00B0</h4>
+            <h4>double_integral: &#x222C</h4>
+            <h4>double_prime: &#x2033</h4>
+            <h4>gradient: &#x2207</h4>
+            <h4>integral: &#x222b</h4>
+            <h4>partial_derivative: &#x2202</h4>
+            <h4>prime: &#x2032</h4>
+            <h4>product: &#x220F</h4>
+            <h4>sum: &#x2211</h4>
+            <h4>triple_integral: &#x222D</h4>
+            <h4>triple_prime: &#x2034</h4>
 
-        <h3>Math Constants</h3>
-        <h4>e_constant: &#x2147</h4>
-        <h4>i_constant: &#x2148</h4>
-        <h4>infinity: &#x221E</h4>
-        <h4>pi_constant: &#x03C0</h4>
+            <h3>Geometry </h3>
+            <h4>angle: &#x2220</h4>
+            <h4>measured_angle: &#x2221</h4>
+            <h4>spherical_angle: &#x2222</h4>
+            <h4>perpendicular_to: &#x27C2</h4>
+            <h4>right_angle: &#x221F</h4>
 
-        <h3>Greek Letters </h3>
-        <h4>alpha: &#x03B1</h4>
-        <h4>beta: &#x03B2</h4>
-        <h4>gamma: &#x03B3</h4>
-        <h4>delta: &#x03B4</h4>
-        <h4>epsilon: &#x03B5</h4>
-        <h4>zeta: &#x03B6</h4>
-        <h4>eta: &#x03B7</h4>
-        <h4>theta: &#x03B8</h4>
-        <h4>iota: &#x03B9</h4>
-        <h4>kappa: &#x03BA</h4>
-        <h4>lambda: &#x03BB</h4>
-        <h4>mu: &#x03BC</h4>
-        <h4>nu: &#x03BD</h4>
-        <h4>xi: &#x03BE</h4>
-        <h4>omicron: &#x03BF</h4>
-        <h4>pi: &#x03C0</h4>
-        <h4>rho: &#x03C1</h4>
-        <h4>stigma: &#x03C2</h4>
-        <h4>sigma: &#x03C3</h4>
-        <h4>tau: &#x03C4</h4>
-        <h4>upsilon: &#x03C5</h4>
-        <h4>phi: &#x03C6</h4>
-        <h4>chi: &#x03C7</h4>
-        <h4>psi: &#x03C8</h4>
-        <h4>omega: &#x03C9</h4>
-        <h4>alpha_upper: &#x0391</h4>
-        <h4>beta_upper: &#x0392</h4>
-        <h4>gamma_upper: &#x0393</h4>
-        <h4>delta_upper: &#x0394</h4>
-        <h4>epsilon_upper: &#x0395</h4>
-        <h4>zeta_upper: &#x0396</h4>
-        <h4>eta_upper: &#x0397</h4>
-        <h4>theta_upper: &#x0398</h4>
-        <h4>iota_upper: &#x0399</h4>
-        <h4>kappa_upper: &#x039A</h4>
-        <h4>lambda_upper: &#x039B</h4>
-        <h4>mu_upper: &#x039C</h4>
-        <h4>nu_upper: &#x039D</h4>
-        <h4>xi_upper: &#x039E</h4>
-        <h4>omicron_upper: &#x039F</h4>
-        <h4>pi_upper: &#x03A0</h4>
-        <h4>rho_upper: &#x03A1</h4>
-        <h4>stigma_upper: &#x03DA</h4>
-        <h4>sigma_upper: &#x03A3</h4>
-        <h4>tau_upper: &#x03A4</h4>
-        <h4>upsilon_upper: &#x03A5</h4>
-        <h4>phi_upper: &#x03A6</h4>
-        <h4>chi_upper: &#x03A7</h4>
-        <h4>psi_upper: &#x03A8</h4>
-        <h4>omega_upper: &#x03A9</h4>
-    </div>
+            <h3>Math Constants</h3>
+            <h4>e_constant: &#x2147</h4>
+            <h4>i_constant: &#x2148</h4>
+            <h4>infinity: &#x221E</h4>
+            <h4>pi_constant: &#x03C0</h4>
 
+            <h3>Greek Letters </h3>
+            <h4>alpha: &#x03B1</h4>
+            <h4>beta: &#x03B2</h4>
+            <h4>gamma: &#x03B3</h4>
+            <h4>delta: &#x03B4</h4>
+            <h4>epsilon: &#x03B5</h4>
+            <h4>zeta: &#x03B6</h4>
+            <h4>eta: &#x03B7</h4>
+            <h4>theta: &#x03B8</h4>
+            <h4>iota: &#x03B9</h4>
+            <h4>kappa: &#x03BA</h4>
+            <h4>lambda: &#x03BB</h4>
+            <h4>mu: &#x03BC</h4>
+            <h4>nu: &#x03BD</h4>
+            <h4>xi: &#x03BE</h4>
+            <h4>omicron: &#x03BF</h4>
+            <h4>pi: &#x03C0</h4>
+            <h4>rho: &#x03C1</h4>
+            <h4>stigma: &#x03C2</h4>
+            <h4>sigma: &#x03C3</h4>
+            <h4>tau: &#x03C4</h4>
+            <h4>upsilon: &#x03C5</h4>
+            <h4>phi: &#x03C6</h4>
+            <h4>chi: &#x03C7</h4>
+            <h4>psi: &#x03C8</h4>
+            <h4>omega: &#x03C9</h4>
+            <h4>alpha_upper: &#x0391</h4>
+            <h4>beta_upper: &#x0392</h4>
+            <h4>gamma_upper: &#x0393</h4>
+            <h4>delta_upper: &#x0394</h4>
+            <h4>epsilon_upper: &#x0395</h4>
+            <h4>zeta_upper: &#x0396</h4>
+            <h4>eta_upper: &#x0397</h4>
+            <h4>theta_upper: &#x0398</h4>
+            <h4>iota_upper: &#x0399</h4>
+            <h4>kappa_upper: &#x039A</h4>
+            <h4>lambda_upper: &#x039B</h4>
+            <h4>mu_upper: &#x039C</h4>
+            <h4>nu_upper: &#x039D</h4>
+            <h4>xi_upper: &#x039E</h4>
+            <h4>omicron_upper: &#x039F</h4>
+            <h4>pi_upper: &#x03A0</h4>
+            <h4>rho_upper: &#x03A1</h4>
+            <h4>stigma_upper: &#x03DA</h4>
+            <h4>sigma_upper: &#x03A3</h4>
+            <h4>tau_upper: &#x03A4</h4>
+            <h4>upsilon_upper: &#x03A5</h4>
+            <h4>phi_upper: &#x03A6</h4>
+            <h4>chi_upper: &#x03A7</h4>
+            <h4>psi_upper: &#x03A8</h4>
+            <h4>omega_upper: &#x03A9</h4>
+        </div>
+    </body>
 </html>

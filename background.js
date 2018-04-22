@@ -2,6 +2,17 @@ var focus;
 var newValue;
 var processedValue;
 
+var sug = document.createElement("ul");
+sug.id = "suggestions";
+sug.style.fontSize = "small";
+for (var i = 0; i < 10; ++i)
+{
+	var temp = document.createElement("h1");
+	temp.style.fontSize = "small";
+	sug.appendChild(document.createElement("h1"));
+}
+var bod = document.getElementsByTagName("BODY")[0];
+
 function placeCaretAtEnd(el) {
     el.focus();
     if (typeof window.getSelection != "undefined"
@@ -20,19 +31,76 @@ function placeCaretAtEnd(el) {
     }
 }
 
+var prevfocus;
+
 //Texr extension copyright Texr Team 2018.
 //Requires: Files in the Texr Extension folder.
 //Modifies: None.
 //Effects: Initializes the extension window.
 setInterval(function () {
 	focus = document.querySelector(":focus");
+	try
+	{
+		if (focus.id == "suggestions")
+			focus = prevfocus;
+		if (focus != prevfocus)
+		{
+			document.getElementById("suggestions").parentElement.removeChild(sug);
+			//console.log("Successfully removed suggestions from previous element.")
+		}
+		if (document.getElementById("suggestions") == null)
+		{
+			focus.parentElement.parentElement.appendChild(sug);
+			//console.log("Successfully added suggestions.")
+			try
+			{
+				document.getElementById("suggestions").style.fontSize = "small";
+				document.getElementById("suggestions").addEventListener('click', function(e)
+				{
+					var textBox = focus;
+					try
+					{
+						var textIn = textBox.value;
+					}
+					catch(err)
+					{
+						var textIn = textBox.innerHTML.replace("&nbsp;", " ");
+					}
+					var lastBackSlash = textIn.lastIndexOf("\\");
+					var replacementValue = e.target.innerHTML.substring(e.target.innerHTML.length - 2, e.target.innerHTML.length);
+					try
+					{
+						textBox.value = textIn.substring(0, lastBackSlash) + replacementValue;
+					}
+					catch(err)
+					{
+						textBox.innerText = textIn.substring(0, lastBackSlash) + replacementValue;
+					}
+					placeCaretAtEnd(focus);
+					for (var i = 0; i < 5; ++i)
+					{
+					 sug.childNodes[i].innerText = "";
+			  		}
+	  			});
+			}
+			catch(err)
+			{
+				console.log(err);
+			}
+		}
+	}
+	catch(err)
+	{
+		//console.log("Could not add/remove suggestions.");
+	}
+	prevfocus = focus;
 	//console.log(focus.contentEditable);
 	//alert(focus ? focus.id + ';' + focus.type + ';' + focus.role + ';' + focus.innerHTML + ';' + focus.innerText : "none");
 }, 10);
 
 document.body.onkeyup = function(e)
 {
-    if(e.keyCode == 32 || e.keyCode == 13 || (e.keyCode == 189) || (e.keyCode == 54))
+    if(e.keyCode == 32 || e.keyCode == 13)// || (e.keyCode == 189) || (e.keyCode == 54))
     {
         if (focus != null)
 		{
@@ -40,7 +108,7 @@ document.body.onkeyup = function(e)
 			{
 				newValue = focus.value;
 				processedValue = insertLatexChars(newValue);
-				console.log(newValue + ';' + processedValue);
+				//console.log(newValue + ';' + processedValue);
 				focus.value = processedValue;
 			}
 			catch(err)
@@ -57,9 +125,49 @@ document.body.onkeyup = function(e)
 				placeCaretAtEnd(focus);
 				//alert(newValue + ';' + processedValue);
 			}
+			finally
+			{
+				for (var i = 0; i < 5; ++i)
+				{
+					sug.childNodes[i].innerText = "";
+				}
+			}
 	    }
 	}
+	else
+	{
+		suggest(focus.innerHTML.replace("&nbsp;", " "));
+	}
 	//else if (e.keyCode == )
+}
+
+function suggest(currentTextValue)
+{
+	let textValue = currentTextValue;
+	var tempString = "";
+	var increment = 0;
+	if ((textValue.match(/\\\S+/g)))
+	{
+		tempString = (textValue.match(/\\\S+/g)[0]);
+		for (const entry of Object.entries(REPLACE_CHARS))
+		{
+			if (entry[0].indexOf(tempString.substr(1,)) != -1)
+			{
+				sug.childNodes[increment].innerText = (entry[0] + ': ' + entry[1]).toString();
+				//console.log(sug.childNodes[increment]);
+				increment++;
+				//console.log(increment);
+			}
+			if (increment == 5)
+			{
+				break;
+			}
+		}
+		for (var i = increment; i < 10; ++i)
+		{
+			sug.childNodes[i].innerText = "";
+		}
+	}
 }
 
 //Global variable containing all characters and replacements.
@@ -197,42 +305,16 @@ const REPLACE_CHARS = {
 //Modifies: Text in the text input, swaps command string for unicode.
 //Effects: Text field now contains replaced command.
 function insertLatexChars(currentTextValue) {
-  let textValue = currentTextValue;
-  for (const entry of Object.entries(REPLACE_CHARS)) {
-	const toReplace = entry[0];
-	const replacement = entry[1];
-	textValue = textValue.replace(toReplace, replacement);
-  }
-  var tempString = "";
-  var increment = 0;
-  /*var sug = document.getElementById("suggestions");
-  if ((textValue.match(/\\\S+/g))){
-	tempString = (textValue.match(/\\\S+/g)[0]);
-	for (const entry of Object.entries(REPLACE_CHARS)) {
-	  if (entry[0].indexOf(tempString.substr(1,)) != -1)
-	  {
-		sug.childNodes[2*increment + 1].innerText = (entry[0] + ': ' + entry[1]).toString();
-		increment++;
-	  }
-	  if (increment == 5)
-	  {
-		break;
-	  }
-	}
-	for (var i = increment; i < 5; ++i)
+	let textValue = currentTextValue;
+
+	for (const entry of Object.entries(REPLACE_CHARS))
 	{
-	  sug.childNodes[2*i + 1].innerText = "";
+		const toReplace = entry[0];
+		const replacement = entry[1];
+		textValue = textValue.replace(toReplace, replacement);
 	}
-  }
-  else
-  {
-	for (var i = 0; i < 5; ++i)
-	{
-	  sug.childNodes[2*i + 1].innerText = "";
-	}
-  }*/
+  
   if ((textValue.match(/\^\S+(\s|\_)/g))) {
-  		//alert(textValue.length);
 	  for (var i = textValue.indexOf('^') + 1; i < textValue.length; ++i)
 	  {
 		 if (textValue.charAt(i) == '0') {
@@ -297,7 +379,7 @@ function insertLatexChars(currentTextValue) {
 	  textValue = textValue.substr(0, textValue.indexOf('^')) + textValue.substr(textValue.indexOf('^') + 1, textValue.length);
 	  for (var i = 0; i < 5; ++i)
 	   {
-		 //sug.childNodes[2*i + 1].innerText = "";
+		 sug.childNodes[i].innerText = "";
 	   }
   }
   else if ((textValue.match(/\_\S+(\s|\^)/g))) {
@@ -359,7 +441,7 @@ function insertLatexChars(currentTextValue) {
 	  textValue = textValue.substr(0, textValue.indexOf('_')) + textValue.substr(textValue.indexOf('_') + 1, textValue.length);
 	  for (var i = 0; i < 5; ++i)
 	   {
-		 //sug.childNodes[2*i + 1].innerText = "";
+		 sug.childNodes[i].innerText = "";
 	   }
   }
   return textValue;
@@ -367,8 +449,8 @@ function insertLatexChars(currentTextValue) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const latex_input = focus;
-  /*const suggestions = document.getElementById("suggestions");
-  suggestions.addEventListener('click', function(e) {
+  //const suggestions = document.getElementById("suggestions");
+  sug.addEventListener('click', function(e) {
 	  var textBox = latex_input;
 	  var textIn = textBox.value;
 	  var lastBackSlash = textIn.lastIndexOf("\\");
@@ -377,9 +459,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	  textBox.focus();
 	  for (var i = 0; i < 5; ++i)
 	  {
-		 suggestions.childNodes[2*i + 1].innerText = "";
+		 suggestions.childNodes[i].innerText = "";
 	  }
-  });*/
+  });
   document.addEventListener('keydown', function(e) {
 	  if (e.keyCode == 13) {
 		 replaceWithEnter();
